@@ -1,14 +1,17 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
+version = "1.0.0"
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
+    compileSdkVersion 17
+    buildToolsVersion "21.1.1"
+    resourcePrefix "1"
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion 9
+        targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -18,9 +21,86 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
 }
+def siteUrl = 'https://github.com/saymagic/AndroidUtils'
+// 项目的主页
+def gitUrl = 'https://github.com/l123456789jy/Lazy'
+// Git仓库的url
+group = "com.github.lazylibrary" // Maven Group ID for the artifact，一般填你唯一的包名
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'Android Commonly used utils' //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'lazy' //填写开发者基本信息
+                        name 'lazy'
+                        email '906514731@qq.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath +=
+            project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(
+        project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven" //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
+        name = "utils" //发布到Bintray上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+    javadoc {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            author true
+            version true
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+

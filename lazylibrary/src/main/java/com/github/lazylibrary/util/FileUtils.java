@@ -746,7 +746,6 @@ public class FileUtils {
                 is.close();
             }
         } catch (IOException e) {
-            Log.e(TAG, e + "");
             return false;
         }
         return true;
