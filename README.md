@@ -42,6 +42,14 @@
 - HanziToPinyin
 - RegularExpression
 - MiscUtils
+- AnimationUtils
+- Colors
+- ChannelUtil
+- DataCleanManager
+- DatabaseExportUtils
+- DeviceStatusUtils
+- PhoneUtil
+- ShortCutUtils
 
 ## License
 
