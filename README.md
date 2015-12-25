@@ -54,17 +54,8 @@
 
 
 
-##使用
-         allprojects {
-                    repositories {
-                        maven { url "https://jitpack.io" }
-                    }
-                }
-
-
-##
-          compile 'com.github.l123456789jy:Lazy:-SNAPSHOT'
-
+##依赖
+          compile 'com.github.lazylibrary:lazylibrary:1.0.2'
 
 
 ## License
