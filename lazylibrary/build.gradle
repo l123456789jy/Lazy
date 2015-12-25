@@ -25,7 +25,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 // 项目的主页
-def siteUrl = 'https://github.com/l123456789jy/Lazy.git'
+def siteUrl = 'https://github.com/l123456789jy/Lazy'
 // Git仓库的url
 def gitUrl = 'https://github.com/l123456789jy/Lazy.git'
 
@@ -37,7 +37,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'Android Commonly used utils' //项目描述
+                name '常用的工具类集合' //项目描述
                 url siteUrl
                 // Set your license
                 licenses {
