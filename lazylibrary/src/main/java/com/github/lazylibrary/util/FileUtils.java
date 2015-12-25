@@ -980,4 +980,28 @@ public class FileUtils {
             Toast.makeText(context, "打开失败.", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    /**
+     * 文件重命名
+     *
+     * @param path
+     *            文件目录
+     * @param oldname
+     *            原来的文件名
+     * @param newname
+     *            新文件名
+     */
+    public static void renameFile(String oldPath, String newPath) {
+        try {
+            if (!TextUtils.isEmpty(oldPath) && !TextUtils.isEmpty(newPath)
+                    && !oldPath.equals(newPath)) {
+                File fileOld = new File(oldPath);
+                File fileNew = new File(newPath);
+                fileOld.renameTo(fileNew);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
