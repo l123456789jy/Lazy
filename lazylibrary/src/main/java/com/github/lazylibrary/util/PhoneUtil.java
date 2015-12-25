@@ -72,8 +72,8 @@ public final class PhoneUtil {
     /**
      * 获取手机型号
      *
-     * @param context
-     * @return
+     * @param context  上下文
+     * @return   String
      */
     public static String getMobileModel(Context context) {
         try {
@@ -87,8 +87,8 @@ public final class PhoneUtil {
     /**
      * 获取手机品牌
      *
-     * @param context
-     * @return
+     * @param context  上下文
+     * @return  String
      */
     public static String getMobileBrand(Context context) {
         try {

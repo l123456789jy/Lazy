@@ -985,14 +985,11 @@ public class FileUtils {
     /**
      * 文件重命名
      *
-     * @param path
-     *            文件目录
-     * @param oldname
-     *            原来的文件名
-     * @param newname
-     *            新文件名
+     * @param oldPath    旧的文件名字
+     * @param newPath    新的文件名字
      */
     public static void renameFile(String oldPath, String newPath) {
+
         try {
             if (!TextUtils.isEmpty(oldPath) && !TextUtils.isEmpty(newPath)
                     && !oldPath.equals(newPath)) {
