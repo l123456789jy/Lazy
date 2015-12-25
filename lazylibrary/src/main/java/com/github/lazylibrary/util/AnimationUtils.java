@@ -266,9 +266,9 @@ public final class AnimationUtils {
     /**
      * 获取一个缩小动画
      *
-     * @param durationMillis
-     * @param animationListener
-     * @return
+     * @param durationMillis   时间
+     * @param animationListener  监听
+     * @return 一个缩小动画
      */
     public static ScaleAnimation getLessenScaleAnimation(long durationMillis, AnimationListener animationListener) {
         ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 0.0f, 1.0f,
@@ -276,6 +276,7 @@ public final class AnimationUtils {
                 ScaleAnimation.RELATIVE_TO_SELF);
         scaleAnimation.setDuration(durationMillis);
         scaleAnimation.setAnimationListener(animationListener);
+
         return scaleAnimation;
     }
 
@@ -283,32 +284,34 @@ public final class AnimationUtils {
     /**
      * 获取一个缩小动画
      *
-     * @param durationMillis
-     * @return
+     * @param durationMillis 时间
+     * @return 一个缩小动画
      */
     public static ScaleAnimation getLessenScaleAnimation(long durationMillis) {
         return getLessenScaleAnimation(durationMillis, null);
+
     }
 
 
     /**
      * 获取一个缩小动画
      *
-     * @param animationListener
-     * @return
+     * @param animationListener  监听
+     * @return 返回一个缩小的动画
      */
     public static ScaleAnimation getLessenScaleAnimation(AnimationListener animationListener) {
         return getLessenScaleAnimation(DEFAULT_ANIMATION_DURATION,
                 animationListener);
+
     }
 
 
     /**
      * 获取一个放大动画
+     * @param durationMillis   时间
+     * @param animationListener  监听
      *
-     * @param durationMillis
-     * @param animationListener
-     * @return
+     * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(long durationMillis, AnimationListener animationListener) {
         ScaleAnimation scaleAnimation = new ScaleAnimation(0.0f, 1.0f, 0.0f,
@@ -323,22 +326,25 @@ public final class AnimationUtils {
     /**
      * 获取一个放大动画
      *
-     * @param durationMillis
-     * @return
+     * @param durationMillis   时间
+     *
+     * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(long durationMillis) {
         return getAmplificationAnimation(durationMillis, null);
+
     }
 
 
     /**
      * 获取一个放大动画
      *
-     * @param animationListener
-     * @return
+     * @param animationListener  监听
+     * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(AnimationListener animationListener) {
         return getAmplificationAnimation(DEFAULT_ANIMATION_DURATION,
                 animationListener);
+
     }
 }

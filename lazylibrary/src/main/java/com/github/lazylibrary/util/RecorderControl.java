@@ -84,10 +84,17 @@ public class RecorderControl {
 			mRecorder = new MediaRecorder();
 		}
 	}
+
+
+	/**
+	 *
+	 * @return  String
+	 */
 	/*
 	 * 停止录音
 	 */
 	public String stopRecording(){
+
 		try {
 			mRecorder.stop();
 		} catch (Exception e) {
@@ -101,8 +108,16 @@ public class RecorderControl {
 
 		return mFileName;
 	}
+
+
+	/**
+	 *
+	 * @param Filename  Filename
+	 * @param completion  completion
+	 */
 	//
 	public void startPlaying(String Filename,OnCompletionListener completion){
+
 		if(!playState){
 			if(mPlayer == null){
 				mPlayer = new MediaPlayer();
@@ -148,8 +163,10 @@ public class RecorderControl {
 
 	/**
 	 * 停止播放
+	 * @return    boolean
 	 */
 	public boolean stopPlaying(){
+
 		if(mPlayer!=null){
 			//			if(mPlayer!=null&&mPlayer.isPlaying()){
 			Log.i("spoort_list", "RecorderControl mPlayer.stop()");
@@ -178,7 +195,7 @@ public class RecorderControl {
 
 	/**
 	 * 获取音量的大小
-	 * @return
+	 * @return   double
 	 */
 	public double getAmplitude() {
 		if(mRecorder!=null){

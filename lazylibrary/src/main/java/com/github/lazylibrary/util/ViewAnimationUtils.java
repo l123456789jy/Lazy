@@ -538,7 +538,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，重复7次
      *
-     * @param view
+     * @param view     view
      * @param cycles         重复次数
      * @param durationMillis 持续时间
      * @param isBanClick     在执行动画的过程中是否禁止点击
@@ -552,7 +552,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，持续700毫秒
      *
-     * @param view
+     * @param view    view
      * @param cycles         重复次数
      * @param isBanClick     在执行动画的过程中是否禁止点击
      */
@@ -563,7 +563,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10
      *
-     * @param view
+     * @param view            view
      * @param cycles         重复次数
      * @param durationMillis 持续时间
      */
@@ -574,7 +574,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，重复7次
      *
-     * @param view
+     * @param view      view
      * @param durationMillis 持续时间
      * @param isBanClick     在执行动画的过程中是否禁止点击
      */
@@ -596,7 +596,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，重复7次
      *
-     * @param view
+     * @param view     view
      * @param durationMillis 持续时间
      */
     public static void shake(View view, long durationMillis) {
@@ -606,7 +606,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，重复7次，持续700毫秒
      *
-     * @param view
+     * @param view      view
      * @param isBanClick 在执行动画的过程中是否禁止点击
      */
     public static void shake(View view, final boolean isBanClick) {
@@ -616,7 +616,7 @@ public final class ViewAnimationUtils {
     /**
      * 视图摇晃，默认摇晃幅度为10，重复7次，持续700毫秒
      *
-     * @param view
+     * @param view  view
      */
     public static void shake(View view) {
         translate(view, 0.0f, 10.0f, 0.0f, 0.0f, 7, 700, false);

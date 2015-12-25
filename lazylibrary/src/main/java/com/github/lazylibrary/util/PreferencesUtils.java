@@ -3,31 +3,6 @@ package com.github.lazylibrary.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * PreferencesUtils, easy to get or put data
- * <ul>
- * <strong>Preference Name</strong>
- * <li>you can change preference name by {@link #PREFERENCE_NAME}</li>
- * </ul>
- * <ul>
- * <strong>Put Value</strong>
- * <li>put string {@link #putString(Context, String, String)}</li>
- * <li>put int {@link #putInt(Context, String, int)}</li>
- * <li>put long {@link #putLong(Context, String, long)}</li>
- * <li>put float {@link #putFloat(Context, String, float)}</li>
- * <li>put boolean {@link #putBoolean(Context, String, boolean)}</li>
- * </ul>
- * <ul>
- * <strong>Get Value</strong>
- * <li>get string {@link #getString(Context, String)}, {@link #getString(Context, String, String)}</li>
- * <li>get int {@link #getInt(Context, String)}, {@link #getInt(Context, String, int)}</li>
- * <li>get long {@link #getLong(Context, String)}, {@link #getLong(Context, String, long)}</li>
- * <li>get float {@link #getFloat(Context, String)}, {@link #getFloat(Context, String, float)}</li>
- * <li>get boolean {@link #getBoolean(Context, String)}, {@link #getBoolean(Context, String, boolean)}</li>
- * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-3-6
- */
 public class PreferencesUtils {
 
     public static String PREFERENCE_NAME = "TrineaAndroidCommon";
@@ -39,7 +14,7 @@ public class PreferencesUtils {
     /**
      * put string preferences
      * 
-     * @param context
+     * @param context   context
      * @param key The name of the preference to modify
      * @param value The new value for the preference
      * @return True if the new values were successfully written to persistent storage.
@@ -54,7 +29,7 @@ public class PreferencesUtils {
     /**
      * get string preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @return The preference value if it exists, or null. Throws ClassCastException if there is a preference with this
      *         name that is not a string
@@ -67,7 +42,7 @@ public class PreferencesUtils {
     /**
      * get string preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @param defaultValue Value to return if this preference does not exist
      * @return The preference value if it exists, or defValue. Throws ClassCastException if there is a preference with
@@ -81,7 +56,7 @@ public class PreferencesUtils {
     /**
      * put int preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to modify
      * @param value The new value for the preference
      * @return True if the new values were successfully written to persistent storage.
@@ -96,7 +71,7 @@ public class PreferencesUtils {
     /**
      * get int preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @return The preference value if it exists, or -1. Throws ClassCastException if there is a preference with this
      *         name that is not a int
@@ -109,7 +84,7 @@ public class PreferencesUtils {
     /**
      * get int preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @param defaultValue Value to return if this preference does not exist
      * @return The preference value if it exists, or defValue. Throws ClassCastException if there is a preference with
@@ -123,7 +98,7 @@ public class PreferencesUtils {
     /**
      * put long preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to modify
      * @param value The new value for the preference
      * @return True if the new values were successfully written to persistent storage.
@@ -138,7 +113,7 @@ public class PreferencesUtils {
     /**
      * get long preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @return The preference value if it exists, or -1. Throws ClassCastException if there is a preference with this
      *         name that is not a long
@@ -151,7 +126,7 @@ public class PreferencesUtils {
     /**
      * get long preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @param defaultValue Value to return if this preference does not exist
      * @return The preference value if it exists, or defValue. Throws ClassCastException if there is a preference with
@@ -165,7 +140,7 @@ public class PreferencesUtils {
     /**
      * put float preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to modify
      * @param value The new value for the preference
      * @return True if the new values were successfully written to persistent storage.
@@ -180,7 +155,7 @@ public class PreferencesUtils {
     /**
      * get float preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @return The preference value if it exists, or -1. Throws ClassCastException if there is a preference with this
      *         name that is not a float
@@ -193,7 +168,7 @@ public class PreferencesUtils {
     /**
      * get float preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @param defaultValue Value to return if this preference does not exist
      * @return The preference value if it exists, or defValue. Throws ClassCastException if there is a preference with
@@ -207,7 +182,7 @@ public class PreferencesUtils {
     /**
      * put boolean preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to modify
      * @param value The new value for the preference
      * @return True if the new values were successfully written to persistent storage.
@@ -222,7 +197,7 @@ public class PreferencesUtils {
     /**
      * get boolean preferences, default is false
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @return The preference value if it exists, or false. Throws ClassCastException if there is a preference with this
      *         name that is not a boolean
@@ -235,7 +210,7 @@ public class PreferencesUtils {
     /**
      * get boolean preferences
      * 
-     * @param context
+     * @param context  context
      * @param key The name of the preference to retrieve
      * @param defaultValue Value to return if this preference does not exist
      * @return The preference value if it exists, or defValue. Throws ClassCastException if there is a preference with

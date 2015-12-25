@@ -16,30 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-/**
- * ViewUtils
- * <ul>
- * <strong>get view height</strong>
- * <li>{@link ViewUtils#getListViewHeightBasedOnChildren(ListView)}</li>
- * <li>{@link ViewUtils#getAbsListViewHeightBasedOnChildren(AbsListView)}</li>
- * </ul>
- * <ul>
- * <strong>set view height</strong>
- * <li>{@link ViewUtils#setViewHeight(View, int)} set view height</li>
- * <li>{@link ViewUtils#setListViewHeightBasedOnChildren(ListView)}</li>
- * <li>{@link ViewUtils#setAbsListViewHeightBasedOnChildren(AbsListView)}</li>
- * </ul>
- * <ul>
- * <strong>get other info</strong>
- * <li>{@link ViewUtils#getGridViewVerticalSpacing(GridView)} get GridView vertical spacing</li>
- * </ul>
- * <ul>
- * <strong>set other info</strong>
- * <li>{@link ViewUtils#setSearchViewOnClickListener(View, OnClickListener)}</li>
- * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-24
- */
 public class ViewUtils {
 
     private ViewUtils() {
@@ -49,8 +25,8 @@ public class ViewUtils {
     /**
      * get ListView height according to every children
      * 
-     * @param view
-     * @return
+     * @param view  view
+     * @return  int
      */
     public static int getListViewHeightBasedOnChildren(ListView view) {
         int height = getAbsListViewHeightBasedOnChildren(view);
@@ -117,8 +93,8 @@ public class ViewUtils {
     /**
      * get GridView vertical spacing
      * 
-     * @param view
-     * @return
+     * @param view  view
+     * @return   int
      */
     public static int getGridViewVerticalSpacing(GridView view) {
         // get mVerticalSpacing by android.widget.GridView
@@ -142,9 +118,9 @@ public class ViewUtils {
 
     /**
      * get AbsListView height according to every children
-     * 
-     * @param view
-     * @return
+     *
+     * @param view  view
+     * @return   int
      */
     public static int getAbsListViewHeightBasedOnChildren(AbsListView view) {
         ListAdapter adapter;
@@ -168,8 +144,8 @@ public class ViewUtils {
     /**
      * set view height
      * 
-     * @param view
-     * @param height
+     * @param view   view
+     * @param height  height
      */
     public static void setViewHeight(View view, int height) {
         if (view == null) {
@@ -190,21 +166,19 @@ public class ViewUtils {
     // setViewHeight(view, getGridViewHeightBasedOnChildren(view));
     // }
 
+
     /**
-     * set ListView height which is calculated by {@link # getListViewHeightBasedOnChildren(ListView)}
-     * 
-     * @param view
-     * @return
+     *
+     * @param view  listview
      */
     public static void setListViewHeightBasedOnChildren(ListView view) {
+
         setViewHeight(view, getListViewHeightBasedOnChildren(view));
     }
 
     /**
-     * set AbsListView height which is calculated by {@link # getAbsListViewHeightBasedOnChildren(AbsListView)}
-     * 
-     * @param view
-     * @return
+     *
+     * @param view  AbsListView
      */
     public static void setAbsListViewHeightBasedOnChildren(AbsListView view) {
         setViewHeight(view, getAbsListViewHeightBasedOnChildren(view));
@@ -213,8 +187,8 @@ public class ViewUtils {
     /**
      * set SearchView OnClickListener
      * 
-     * @param v
-     * @param listener
+     * @param v  set SearchView OnClickListener
+     * @param listener  set SearchView OnClickListener
      */
     public static void setSearchViewOnClickListener(View v, OnClickListener listener) {
         if (v instanceof ViewGroup) {
@@ -237,13 +211,14 @@ public class ViewUtils {
 
     /**
      * get descended views from parent.
-     * 
-     * @param parent
+     * @param <T>   泛型
+     * @param parent   ViewGroup
      * @param filter Type of views which will be returned.
      * @param includeSubClass Whether returned list will include views which are subclass of filter or not.
-     * @return
+     * @return  View
      */
     public static <T extends View> List<T> getDescendants(ViewGroup parent, Class<T> filter, boolean includeSubClass) {
+
         List<T> descendedViewList = new ArrayList<T>();
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {

@@ -36,8 +36,8 @@ public final class WindowUtils {
     /**
      * 获取当前窗口的旋转角度
      *
-     * @param activity
-     * @return
+     * @param activity activity
+     * @return  int
      */
     public static int getDisplayRotation(Activity activity) {
         switch (activity.getWindowManager().getDefaultDisplay().getRotation()) {
@@ -57,8 +57,8 @@ public final class WindowUtils {
     /**
      * 当前是否是横屏
      *
-     * @param context
-     * @return
+     * @param context  context
+     * @return  boolean
      */
     public static final boolean isLandscape(Context context) {
         return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
@@ -67,8 +67,8 @@ public final class WindowUtils {
     /**
      * 当前是否是竖屏
      *
-     * @param context
-     * @return
+     * @param context  context
+     * @return   boolean
      */
     public static final boolean isPortrait(Context context) {
         return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;

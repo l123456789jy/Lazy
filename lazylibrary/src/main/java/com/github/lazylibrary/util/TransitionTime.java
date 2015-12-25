@@ -27,10 +27,12 @@ public class TransitionTime {
     /**
      * 时间转换
      *
-     * @param  1970的毫秒数
+     * @param time    时间
      * @param timeFormat 时间的格式 eg: yyyy-MM-dd hh:mm:ss
+     * @return  String
      */
     public String convert(String time, String timeFormat) {
+
         timeMills = Long.parseLong(time);
         Date date = new Date(timeMills);
         String strs = "";
@@ -44,7 +46,13 @@ public class TransitionTime {
     }
 
 
+    /**
+     *
+     * @param startTime  开始的事件
+     * @return  返回距离发帖时间的时间差
+     */
     public String twoDateDistance(String startTime) {
+
         if (startTime.equals("")) {
 
             return "";
@@ -87,9 +95,9 @@ public class TransitionTime {
     /**
      * UTM转换成日期描述，如三周前，上午，昨天等
      *
-     * @param milliseconds
+     * @param milliseconds milliseconds
      * @param isShowWeek 是否采用周的形式显示  true 显示为3周前，false 则显示为时间格式mm-dd
-     * @return
+     * @return  如三周前，上午，昨天等
      */
 
     public static String getTimeDesc(long milliseconds,boolean isShowWeek) {
@@ -147,16 +155,20 @@ public class TransitionTime {
 
     /**
      * UTM转换成日期描述，如三周前，上午，昨天等
+     *
+     * @param milliseconds    时间
+     * @return UTM转换成日期描述，如三周前，上午，昨天等
      * */
     public static String getTimeDesc(long milliseconds) {
+
         return getTimeDesc(milliseconds,true);
     }
 
     /**
      * UTM转换成日期 ,hh:mm
      *
-     * @param milliseconds
-     * @return
+     * @param milliseconds  milliseconds
+     * @return UTM转换成日期 ,hh:mm
      */
 
     public static String getDisplayTime(long milliseconds) {
@@ -168,8 +180,8 @@ public class TransitionTime {
     /**
      * UTM转换成带描述的日期
      *
-     * @param milliseconds
-     * @return
+     * @param milliseconds  milliseconds
+     * @return   UTM转换成带描述的日期
      */
 
     public static String getDisplayTimeAndDesc(long milliseconds) {
@@ -221,10 +233,11 @@ public class TransitionTime {
     /**
      * 日期变量转成对应的星期字符串
      *
-     * @param date
-     * @return
+     * @param milliseconds    data
+     * @return  日期变量转成对应的星期字符串
      */
     public static String DateToWeek(long milliseconds) {
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliseconds);
         int dayIndex = calendar.get(Calendar.DAY_OF_WEEK);
@@ -239,7 +252,7 @@ public class TransitionTime {
      * 将时间间隔转换成描述性字符串，如2天前，3月1天后等。
      * @param toDate 相对的日期
      * @param isFull 是否全部显示 true 全部显示 false 简单显示
-     * @return
+     * @return  将时间间隔转换成描述性字符串，如2天前，3月1天后等。
      */
     public static String diffDateAsDesc(Date toDate, boolean isFull) {
         String diffDesc = "";

@@ -53,10 +53,10 @@ public class IOUtils {
 
     /**
      *保存文本
-     * @param fileName
-     * @param content
-     * @param append
-     * @return
+     * @param fileName  文件名字
+     * @param content  内容
+     * @param append  是否累加
+     * @return  是否成功
      */
     public static boolean saveTextValue(String fileName, String content, boolean append) {
 
@@ -77,8 +77,10 @@ public class IOUtils {
 
     /**
      * 删除目录下所有文件
+     * @param Path    路径
      */
     public static void deleteAllFile(String Path) {
+
         // 删除目录下所有文件
         File path = new File(Path);
         File files[] = path.listFiles();

@@ -29,7 +29,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.PixelFormat;
-import android.graphics.PorterDuff;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -130,7 +129,7 @@ final class BitmapUtil {
 
         // 通过JNI的形式读取本地图片达到节省内存的目的
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inPreferredConfig = Config.RGB_565;
         options.inPurgeable = true;
         options.inInputShareable = true;
         InputStream is = res.openRawResource(resId);
@@ -196,7 +195,7 @@ final class BitmapUtil {
             while ((len = inputStream.read(buffer)) >= 0) {
                 os.write(buffer, 0, len);
             }
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return os.toByteArray();
@@ -244,7 +243,7 @@ final class BitmapUtil {
      */
     public static Bitmap getBitmapFromView(View view) {
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
-                Bitmap.Config.ARGB_8888);
+                Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
 
         view.layout(view.getLeft(), view.getTop(), view.getRight(),
@@ -300,8 +299,8 @@ final class BitmapUtil {
         int width = drawable.getIntrinsicWidth();
         int height = drawable.getIntrinsicHeight();
         Bitmap bitmap = Bitmap.createBitmap(width, height, drawable
-                                                                   .getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
-                                                                                                       : Bitmap.Config.RGB_565);
+                                                                   .getOpacity() != PixelFormat.OPAQUE ? Config.ARGB_8888
+                                                                                                       : Config.RGB_565);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, width, height);
         drawable.draw(canvas);
@@ -323,9 +322,9 @@ final class BitmapUtil {
         int height = bgd.getHeight() > fg.getHeight() ? bgd.getHeight() : fg
                 .getHeight();
 
-        bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        bmp = Bitmap.createBitmap(width, height, Config.ARGB_8888);
         Paint paint = new Paint();
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_ATOP));
 
         Canvas canvas = new Canvas(bmp);
         canvas.drawBitmap(bgd, 0, 0, null);
@@ -355,9 +354,9 @@ final class BitmapUtil {
             bgd = zoom(bgd, width, height);
         }
 
-        bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        bmp = Bitmap.createBitmap(width, height, Config.ARGB_8888);
         Paint paint = new Paint();
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_ATOP));
 
         Canvas canvas = new Canvas(bmp);
         canvas.drawBitmap(bgd, 0, 0, null);
@@ -611,8 +610,8 @@ final class BitmapUtil {
                     width = (int) (height * ratio);
                 }
 
-                final Bitmap.Config c = (width == sIconWidth && height == sIconHeight) ? bitmap
-                        .getConfig() : Bitmap.Config.ARGB_8888;
+                final Config c = (width == sIconWidth && height == sIconHeight) ? bitmap
+                        .getConfig() : Config.ARGB_8888;
                 final Bitmap thumb = Bitmap.createBitmap(sIconWidth,
                         sIconHeight, c);
                 final Canvas canvas = sCanvas;
@@ -626,7 +625,7 @@ final class BitmapUtil {
                 canvas.drawBitmap(bitmap, sOldBounds, sBounds, paint);
                 return thumb;
             } else if (bitmapWidth < width || bitmapHeight < height) {
-                final Bitmap.Config c = Bitmap.Config.ARGB_8888;
+                final Config c = Config.ARGB_8888;
                 final Bitmap thumb = Bitmap.createBitmap(sIconWidth,
                         sIconHeight, c);
                 final Canvas canvas = sCanvas;
@@ -831,7 +830,7 @@ final class BitmapUtil {
         int width = src.getWidth();
         int height = src.getHeight();
         Bitmap bitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;
@@ -1227,7 +1226,7 @@ final class BitmapUtil {
         paint.setColorFilter(new ColorMatrixColorFilter(saturationColorMatrix));
         // 创建一个新的图片并创建画布
         Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+                bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(newBitmap);
         // 将原图使用给定的画笔画到画布上
         canvas.drawBitmap(bitmap, 0, 0, paint);
@@ -1253,7 +1252,7 @@ final class BitmapUtil {
         paint.setColorFilter(new ColorMatrixColorFilter(lumColorMatrix));
         // 创建一个新的图片并创建画布
         Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+                bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(newBitmap);
         // 将原图使用给定的画笔画到画布上
         canvas.drawBitmap(bitmap, 0, 0, paint);
@@ -1283,7 +1282,7 @@ final class BitmapUtil {
         paint.setColorFilter(new ColorMatrixColorFilter(hueColorMatrix));
         // 创建一个新的图片并创建画布
         Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+                bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(newBitmap);
         // 将原图使用给定的画笔画到画布上
         canvas.drawBitmap(bitmap, 0, 0, paint);
@@ -1327,7 +1326,7 @@ final class BitmapUtil {
         paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
         // 创建一个新的图片并创建画布
         Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+                bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(newBitmap);
         // 将原图使用给定的画笔画到画布上
         canvas.drawBitmap(bitmap, 0, 0, paint);
@@ -1344,7 +1343,7 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
         int pixColor = 0;
         int pixR = 0;
         int pixG = 0;
@@ -1385,7 +1384,7 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;
@@ -1451,7 +1450,7 @@ final class BitmapUtil {
         final int width = bitmap.getWidth();
         final int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;
@@ -1517,7 +1516,7 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;
@@ -1570,7 +1569,7 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;
@@ -1628,7 +1627,7 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Bitmap newBitmap = Bitmap.createBitmap(width, height,
-                Bitmap.Config.RGB_565);
+                Config.RGB_565);
 
         int pixR = 0;
         int pixG = 0;

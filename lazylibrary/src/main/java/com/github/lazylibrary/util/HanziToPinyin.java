@@ -41,8 +41,11 @@ import java.util.Locale;
 public class HanziToPinyin {
     /**
      * 返回小写拼音
+     * @param input    字符串
+     * @return  返回之后的数值
      */
     public static String getPinYin(String input) {
+
         ArrayList<Token> tokens = HanziToPinyin.getInstance().get(input);
         StringBuilder sb = new StringBuilder();
         if (tokens != null && tokens.size() > 0) {
@@ -538,8 +541,11 @@ public class HanziToPinyin {
      * space will be put into a Token, One Hanzi character which has pinyin will
      * be treated as a
      * Token. If these is no China collator, the empty token array is returned.
+     * @param input   字符串
+     * @return  返回值
      */
     public ArrayList<Token> get(final String input) {
+
         ArrayList<Token> tokens = new ArrayList<Token>();
         if (!mHasChinaCollator || TextUtils.isEmpty(input)) {
             // return empty tokens.

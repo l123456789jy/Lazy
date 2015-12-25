@@ -6,24 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-/**
- * ShellUtils
- * <ul>
- * <strong>Check root</strong>
- * <li>{@link ShellUtils#checkRootPermission()}</li>
- * </ul>
- * <ul>
- * <strong>Execte command</strong>
- * <li>{@link ShellUtils#execCommand(String, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String, boolean, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(List, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(List, boolean, boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String[], boolean)}</li>
- * <li>{@link ShellUtils#execCommand(String[], boolean, boolean)}</li>
- * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-16
- */
+
 public class ShellUtils {
 
     public static final String COMMAND_SU       = "su";
@@ -38,7 +21,7 @@ public class ShellUtils {
     /**
      * check whether has root permission
      * 
-     * @return
+     * @return  boolean
      */
     public static boolean checkRootPermission() {
         return execCommand("echo root", true, false).result == 0;
@@ -49,7 +32,7 @@ public class ShellUtils {
      * 
      * @param command command
      * @param isRoot whether need to run with root
-     * @return
+     * @return  CommandResult
      * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot) {
@@ -61,7 +44,7 @@ public class ShellUtils {
      * 
      * @param commands command list
      * @param isRoot whether need to run with root
-     * @return
+     * @return  CommandResult
      * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot) {
@@ -73,7 +56,7 @@ public class ShellUtils {
      * 
      * @param commands command array
      * @param isRoot whether need to run with root
-     * @return
+     * @return  CommandResult
      * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String[] commands, boolean isRoot) {
@@ -86,7 +69,7 @@ public class ShellUtils {
      * @param command command
      * @param isRoot whether need to run with root
      * @param isNeedResultMsg whether need result msg
-     * @return
+     * @return  CommandResult
      * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot, boolean isNeedResultMsg) {
@@ -99,7 +82,7 @@ public class ShellUtils {
      * @param commands command list
      * @param isRoot whether need to run with root
      * @param isNeedResultMsg whether need result msg
-     * @return
+     * @return  CommandResult
      * @see ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot, boolean isNeedResultMsg) {

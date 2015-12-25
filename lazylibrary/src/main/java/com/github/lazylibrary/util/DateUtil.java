@@ -166,59 +166,81 @@ public class DateUtil {
 
     /**
      * 获得当前日期的字符串格式
+     * @param format    格式化的类型
+     * @return  返回格式化之后的事件
      */
     public static String getCurDateStr(String format) {
         Calendar c = Calendar.getInstance();
         return date2Str(c, format);
+
     }
 
 
-    // 格式到秒
+    /**
+     *
+     * @param time 当前的时间
+     * @return  格式到秒
+     */
+    //
     public static String getMillon(long time) {
 
         return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(time);
+
     }
 
 
-    // 格式到天
+    /**
+     *
+     * @param time  当前的时间
+     * @return  当前的天
+     */
     public static String getDay(long time) {
 
         return new SimpleDateFormat("yyyy-MM-dd").format(time);
+
     }
 
 
+    /**
+     *
+     * @param time 时间
+     * @return 返回一个毫秒
+     */
     // 格式到毫秒
     public static String getSMillon(long time) {
 
         return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(time);
+
     }
 
 
     /**
      * 在日期上增加数个整月
-     *
      * @param date 日期
      * @param n 要增加的月数
+     * @return   增加数个整月
      */
     public static Date addMonth(Date date, int n) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.MONTH, n);
         return cal.getTime();
+
     }
 
 
     /**
      * 在日期上增加天数
-     *
      * @param date 日期
      * @param n 要增加的天数
+     * @return   增加之后的天数
      */
     public static Date addDay(Date date, int n) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, n);
         return cal.getTime();
+
     }
 
 
@@ -227,73 +249,28 @@ public class DateUtil {
      *
      * @param format 格式化时间的格式
      * @param h 距现在的小时 例如：h=-1为上一个小时，h=1为下一个小时
+     * @return  获取距现在某一小时的时刻
      */
     public static String getNextHour(String format, int h) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         Date date = new Date();
         date.setTime(date.getTime() + h * 60 * 60 * 1000);
         return sdf.format(date);
+
     }
 
 
     /**
      * 获取时间戳
+     * @return 获取时间戳
      */
     public static String getTimeString() {
         SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL);
         Calendar calendar = Calendar.getInstance();
         return df.format(calendar.getTime());
+
     }
 
-
-    /**
-     * 根据预设格式返回当前日期
-     */
-    public static String getNow() {
-        return format(new Date());
-    }
-
-
-    /**
-     * 根据用户格式返回当前日期
-     */
-    public static String getNow(String format) {
-        return format(new Date(), format);
-    }
-
-
-    /**
-     * 使用预设格式格式化日期
-     */
-    public static String format(Date date) {
-        return format(date, getDatePattern());
-    }
-
-
-    /**
-     * 使用用户格式格式化日期
-     *
-     * @param date 日期
-     * @param pattern 日期格式
-     */
-    public static String format(Date date, String pattern) {
-        String returnValue = "";
-        if (date != null) {
-            SimpleDateFormat df = new SimpleDateFormat(pattern);
-            returnValue = df.format(date);
-        }
-        return returnValue;
-    }
-
-
-    /**
-     * 获取日期年份
-     *
-     * @param date 日期
-     */
-    public static String getYear(Date date) {
-        return format(date).substring(0, 4);
-    }
 
 
     /**
@@ -350,8 +327,10 @@ public class DateUtil {
 
     /**
      * 获得默认的 date pattern
+     * @return  默认的格式
      */
     public static String getDatePattern() {
+
         return FORMAT_YMDHMS;
     }
 
@@ -364,6 +343,7 @@ public class DateUtil {
      */
     public static int getSecond(Date date) {
         calendar = Calendar.getInstance();
+
         calendar.setTime(date);
         return calendar.get(Calendar.SECOND);
     }
@@ -373,9 +353,11 @@ public class DateUtil {
      * 使用预设格式提取字符串日期
      *
      * @param strDate 日期字符串
+     * @return 提取字符串的日期
      */
     public static Date parse(String strDate) {
         return parse(strDate, getDatePattern());
+
     }
 
 
@@ -396,6 +378,7 @@ public class DateUtil {
      * 按默认格式的字符串距离今天的天数
      *
      * @param date 日期字符串
+     * @return 按默认格式的字符串距离今天的天数
      */
     public static int countDays(String date) {
         long t = Calendar.getInstance().getTime().getTime();
@@ -403,6 +386,7 @@ public class DateUtil {
         c.setTime(parse(date));
         long t1 = c.getTime().getTime();
         return (int) (t / 1000 - t1 / 1000) / 3600 / 24;
+
     }
 
 
@@ -411,6 +395,7 @@ public class DateUtil {
      *
      * @param strDate 日期字符串
      * @param pattern 日期格式
+     * @return  提取字符串日期
      */
     public static Date parse(String strDate, String pattern) {
         SimpleDateFormat df = new SimpleDateFormat(pattern);
@@ -420,6 +405,7 @@ public class DateUtil {
             e.printStackTrace();
             return null;
         }
+
     }
 
 
@@ -428,6 +414,7 @@ public class DateUtil {
      *
      * @param date 日期字符串
      * @param format 日期格式
+     * @return  按用户格式字符串距离今天的天数
      */
     public static int countDays(String date, String format) {
         long t = Calendar.getInstance().getTime().getTime();
@@ -435,5 +422,6 @@ public class DateUtil {
         c.setTime(parse(date, format));
         long t1 = c.getTime().getTime();
         return (int) (t / 1000 - t1 / 1000) / 3600 / 24;
+
     }
 }

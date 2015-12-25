@@ -32,7 +32,7 @@ public class AssetDatabaseOpenHelper {
     /**
      * Create and/or open a database that will be used for reading and writing.
      * 
-     * @return
+     * @return  返货数据库的对象
      * @throws RuntimeException if cannot copy database from assets
      * @throws SQLiteException if the database cannot be opened
      */
@@ -52,7 +52,7 @@ public class AssetDatabaseOpenHelper {
     /**
      * Create and/or open a database that will be used for reading only.
      * 
-     * @return
+     * @return  返回读的数据库对象
      * @throws RuntimeException if cannot copy database from assets
      * @throws SQLiteException if the database cannot be opened
      */

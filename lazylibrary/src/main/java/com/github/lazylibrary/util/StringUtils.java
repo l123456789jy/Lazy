@@ -30,10 +30,12 @@ public class StringUtils {
      * isBlank(&quot;a b&quot;) = false;
      * </pre>
      *
+     * @param str   str
      * @return if string is null or its size is 0 or it is made by space, return
      * true, else return false.
      */
     public static boolean isBlank(String str) {
+
         return (str == null || str.trim().length() == 0);
     }
 
@@ -47,22 +49,17 @@ public class StringUtils {
      * isEmpty(&quot;  &quot;) = false;
      * </pre>
      *
+     * @param str    str
      * @return if string is null or its size is 0, return true, else return
      * false.
      */
     public static boolean isEmpty(CharSequence str) {
+
         return (str == null || str.length() == 0);
     }
 
 
-    /**
-     * compare two string
-     *
-     * @see ObjectUtils#isEquals(Object, Object)
-     */
-    public static boolean isEquals(String actual, String expected) {
-        return ObjectUtils.isEquals(actual, expected);
-    }
+
 
 
     /**
@@ -74,10 +71,12 @@ public class StringUtils {
      * length(\"abc\") = 3;
      * </pre>
      *
+     * @param str     str
      * @return if str is null or empty, return 0, else return {@link
      * CharSequence#length()}.
      */
     public static int length(CharSequence str) {
+
         return str == null ? 0 : str.length();
     }
 
@@ -90,8 +89,11 @@ public class StringUtils {
      * nullStrToEmpty(&quot;&quot;) = &quot;&quot;;
      * nullStrToEmpty(&quot;aa&quot;) = &quot;aa&quot;;
      * </pre>
+     * @param str     str
+     * @return   String
      */
     public static String nullStrToEmpty(Object str) {
+
         return (str == null
                 ? ""
                 : (str instanceof String ? (String) str : str.toString()));
@@ -99,18 +101,12 @@ public class StringUtils {
 
 
     /**
-     * capitalize first letter
      *
-     * <pre>
-     * capitalizeFirstLetter(null)     =   null;
-     * capitalizeFirstLetter("")       =   "";
-     * capitalizeFirstLetter("2ab")    =   "2ab"
-     * capitalizeFirstLetter("a")      =   "A"
-     * capitalizeFirstLetter("ab")     =   "Ab"
-     * capitalizeFirstLetter("Abc")    =   "Abc"
-     * </pre>
+     * @param str  str
+     * @return  String
      */
     public static String capitalizeFirstLetter(String str) {
+
         if (isEmpty(str)) {
             return str;
         }
@@ -127,17 +123,11 @@ public class StringUtils {
 
     /**
      * encoded in utf-8
-     *
-     * <pre>
-     * utf8Encode(null)        =   null
-     * utf8Encode("")          =   "";
-     * utf8Encode("aa")        =   "aa";
-     * utf8Encode("啊啊啊啊")   = "%E5%95%8A%E5%95%8A%E5%95%8A%E5%95%8A";
-     * </pre>
-     *
-     * @throws UnsupportedEncodingException if an error occurs
+     * @param str    字符串
+     * @return  返回一个utf8的字符串
      */
     public static String utf8Encode(String str) {
+
         if (!isEmpty(str) && str.getBytes().length != str.length()) {
             try {
                 return URLEncoder.encode(str, "UTF-8");
@@ -151,54 +141,12 @@ public class StringUtils {
 
 
     /**
-     * encoded in utf-8, if exception, return defultReturn
-     */
-    public static String utf8Encode(String str, String defultReturn) {
-        if (!isEmpty(str) && str.getBytes().length != str.length()) {
-            try {
-                return URLEncoder.encode(str, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                return defultReturn;
-            }
-        }
-        return str;
-    }
-
-
-    /**
-     * get innerHtml from href
      *
-     * <pre>
-     * getHrefInnerHtml(null)                                  = ""
-     * getHrefInnerHtml("")                                    = ""
-     * getHrefInnerHtml("mp3")                                 = "mp3";
-     * getHrefInnerHtml("&lt;a innerHtml&lt;/a&gt;")                    = "&lt;a
-     * innerHtml&lt;/a&gt;";
-     * getHrefInnerHtml("&lt;a&gt;innerHtml&lt;/a&gt;")                    =
-     * "innerHtml";
-     * getHrefInnerHtml("&lt;a&lt;a&gt;innerHtml&lt;/a&gt;")
-     * = "innerHtml";
-     * getHrefInnerHtml("&lt;a href="baidu.com"&gt;innerHtml&lt;/a&gt;")
-     *       = "innerHtml";
-     * getHrefInnerHtml("&lt;a href="baidu.com" title="baidu"&gt;innerHtml&lt;/a&gt;")
-     * = "innerHtml";
-     * getHrefInnerHtml("   &lt;a&gt;innerHtml&lt;/a&gt;  ")
-     *       = "innerHtml";
-     * getHrefInnerHtml("&lt;a&gt;innerHtml&lt;/a&gt;&lt;/a&gt;")
-     *       = "innerHtml";
-     * getHrefInnerHtml("jack&lt;a&gt;innerHtml&lt;/a&gt;&lt;/a&gt;")
-     *       = "innerHtml";
-     * getHrefInnerHtml("&lt;a&gt;innerHtml1&lt;/a&gt;&lt;a&gt;innerHtml2&lt;/a&gt;")
-     *        = "innerHtml2";
-     * </pre>
-     *
-     * @return <ul>
-     * <li>if href is null, return ""</li>
-     * <li>if not match regx, return source</li>
-     * <li>return the last string that match regx</li>
-     * </ul>
+     * @param href  字符串
+     * @return  返回一个html
      */
     public static String getHrefInnerHtml(String href) {
+
         if (isEmpty(href)) {
             return "";
         }
@@ -215,20 +163,12 @@ public class StringUtils {
 
 
     /**
-     * process special char in html
      *
-     * <pre>
-     * htmlEscapeCharsToString(null) = null;
-     * htmlEscapeCharsToString("") = "";
-     * htmlEscapeCharsToString("mp3") = "mp3";
-     * htmlEscapeCharsToString("mp3&lt;") = "mp3<";
-     * htmlEscapeCharsToString("mp3&gt;") = "mp3\>";
-     * htmlEscapeCharsToString("mp3&amp;mp4") = "mp3&mp4";
-     * htmlEscapeCharsToString("mp3&quot;mp4") = "mp3\"mp4";
-     * htmlEscapeCharsToString("mp3&lt;&gt;&amp;&quot;mp4") = "mp3\<\>&\"mp4";
-     * </pre>
+     * @param source   字符串
+     * @return  返回htmL到字符串
      */
     public static String htmlEscapeCharsToString(String source) {
+
         return StringUtils.isEmpty(source)
                ? source
                : source.replaceAll("&lt;", "<")
@@ -239,16 +179,12 @@ public class StringUtils {
 
 
     /**
-     * transform half width char to full width char
      *
-     * <pre>
-     * fullWidthToHalfWidth(null) = null;
-     * fullWidthToHalfWidth("") = "";
-     * fullWidthToHalfWidth(new String(new char[] {12288})) = " ";
-     * fullWidthToHalfWidth("！＂＃＄％＆) = "!\"#$%&";
-     * </pre>
+     * @param s str
+     * @return String
      */
     public static String fullWidthToHalfWidth(String s) {
+
         if (isEmpty(s)) {
             return s;
         }
@@ -272,16 +208,12 @@ public class StringUtils {
 
 
     /**
-     * transform full width char to half width char
      *
-     * <pre>
-     * halfWidthToFullWidth(null) = null;
-     * halfWidthToFullWidth("") = "";
-     * halfWidthToFullWidth(" ") = new String(new char[] {12288});
-     * halfWidthToFullWidth("!\"#$%&) = "！＂＃＄％＆";
-     * </pre>
+     * @param s  字符串
+     * @return  返回的数值
      */
     public static String halfWidthToFullWidth(String s) {
+
         if (isEmpty(s)) {
             return s;
         }
@@ -304,8 +236,14 @@ public class StringUtils {
     }
 
 
-    //特殊字符替换
+    /**
+     *
+     * @param str  资源
+     * @return  特殊字符串切换
+     */
+
     public static String replaceBlanktihuan(String str) {
+
         String dest = "";
         if (str != null) {
             Pattern p = Pattern.compile("\\s*|\t|\r|\n");

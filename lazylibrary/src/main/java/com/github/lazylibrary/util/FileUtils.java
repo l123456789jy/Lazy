@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 import java.io.BufferedReader;
@@ -22,41 +21,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-/**
- * File Utils
- * <ul>
- * Read or write file
- * <li>{@link #readFile(String, String)} read file</li>
- * <li>{@link #readFileToList(String, String)} read file to string list</li>
- * <li>{@link #writeFile(String, String, boolean)} write file from String</li>
- * <li>{@link #writeFile(String, String)} write file from String</li>
- * <li>{@link #writeFile(String, List, boolean)} write file from String
- * List</li>
- * <li>{@link #writeFile(String, List)} write file from String List</li>
- * <li>{@link #writeFile(String, InputStream)} write file</li>
- * <li>{@link #writeFile(String, InputStream, boolean)} write file</li>
- * <li>{@link #writeFile(File, InputStream)} write file</li>
- * <li>{@link #writeFile(File, InputStream, boolean)} write file</li>
- * </ul>
- * <ul>
- * Operate file
- * <li>{@link #moveFile(File, File)} or {@link #moveFile(String, String)}</li>
- * <li>{@link #copyFile(String, String)}</li>
- * <li>{@link #getFileExtension(String)}</li>
- * <li>{@link #getFileName(String)}</li>
- * <li>{@link #getFileNameWithoutExtension(String)}</li>
- * <li>{@link #getFileSize(String)}</li>
- * <li>{@link #deleteFile(String)}</li>
- * <li>{@link #isFileExist(String)}</li>
- * <li>{@link #isFolderExist(String)}</li>
- * <li>{@link #makeFolders(String)}</li>
- * <li>{@link #makeDirs(String)}</li>
- * </ul>
- *
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-5-12
- */
 public class FileUtils {
     public final String TAG = "LAZY";
     public final static String FILE_EXTENSION_SEPARATOR = ".";
@@ -72,6 +37,7 @@ public class FileUtils {
     /**
      * read file
      *
+     * @param filePath    路径
      * @param charsetName The name of a supported {@link
      * java.nio.charset.Charset </code>charset<code>}
      * @return if file not exist, return null, else return content of file
@@ -79,6 +45,7 @@ public class FileUtils {
      * BufferedReader
      */
     public static StringBuilder readFile(String filePath, String charsetName) {
+
         File file = new File(filePath);
         StringBuilder fileContent = new StringBuilder("");
         if (file == null || !file.isFile()) {
@@ -109,12 +76,15 @@ public class FileUtils {
     /**
      * write file
      *
+     * @param filePath    路径
+     * @param content  上下文
      * @param append is append, if true, write to the end of file, else clear
      * content of file and write into it
      * @return return false if content is empty, true otherwise
      * @throws RuntimeException if an error occurs while operator FileWriter
      */
     public static boolean writeFile(String filePath, String content, boolean append) {
+
         if (StringUtils.isEmpty(content)) {
             return false;
         }
@@ -136,13 +106,16 @@ public class FileUtils {
     /**
      * write file
      *
+     * @param filePath  路径
+     * @param contentList  集合
      * @param append is append, if true, write to the end of file, else clear
      * content of file and write into it
      * @return return false if contentList is empty, true otherwise
      * @throws RuntimeException if an error occurs while operator FileWriter
      */
     public static boolean writeFile(String filePath, List<String> contentList, boolean append) {
-        if (ListUtils.isEmpty(contentList)) {
+
+        if (contentList.size()==0||null==contentList) {
             return false;
         }
 
@@ -168,42 +141,54 @@ public class FileUtils {
 
     /**
      * write file, the string will be written to the begin of the file
+     * @param filePath    地址
+     * @param content  上下文
+     * @return  是否写入成功
      */
     public static boolean writeFile(String filePath, String content) {
+
         return writeFile(filePath, content, false);
     }
 
 
     /**
      * write file, the string list will be written to the begin of the file
+     * @param filePath    地址
+     * @param contentList    集合
+     * @return  是否写入成功
      */
     public static boolean writeFile(String filePath, List<String> contentList) {
         return writeFile(filePath, contentList, false);
+
     }
 
 
     /**
      * write file, the bytes will be written to the begin of the file
      *
-     * @see {@link #writeFile(String, InputStream, boolean)}
+     * @param filePath   路径
+     * @param stream  输入流
+     * @return 返回是否写入成功
      */
     public static boolean writeFile(String filePath, InputStream stream) {
         return writeFile(filePath, stream, false);
+
     }
 
 
     /**
      * write file
      *
+     * @param filePath 路径
      * @param stream the input stream
      * @param append if <code>true</code>, then bytes will be written to the
      * end
      * of the file rather than the beginning
      * @return return true
-     * @throws RuntimeException if an error occurs while operator
      * FileOutputStream
      */
     public static boolean writeFile(String filePath, InputStream stream, boolean append) {
+
         return writeFile(filePath != null ? new File(filePath) : null, stream,
                 append);
     }
@@ -212,10 +197,13 @@ public class FileUtils {
     /**
      * write file, the bytes will be written to the begin of the file
      *
-     * @see {@link #writeFile(File, InputStream, boolean)}
+     * @param file    文件对象
+     * @param stream 输入流
+     * @return 返回是否写入成功
      */
     public static boolean writeFile(File file, InputStream stream) {
         return writeFile(file, stream, false);
+
     }
 
 
@@ -256,8 +244,11 @@ public class FileUtils {
 
     /**
      * move file
+     * @param sourceFilePath    资源路径
+     * @param destFilePath  删除的路径
      */
     public static void moveFile(String sourceFilePath, String destFilePath) {
+
         if (TextUtils.isEmpty(sourceFilePath) ||
                 TextUtils.isEmpty(destFilePath)) {
             throw new RuntimeException(
@@ -269,8 +260,11 @@ public class FileUtils {
 
     /**
      * move file
+     * @param srcFile    文件对象
+     * @param destFile  对象
      */
     public static void moveFile(File srcFile, File destFile) {
+
         boolean rename = srcFile.renameTo(destFile);
         if (!rename) {
             copyFile(srcFile.getAbsolutePath(), destFile.getAbsolutePath());
@@ -282,10 +276,14 @@ public class FileUtils {
     /**
      * copy file
      *
+     * @param sourceFilePath    资源路径
+     * @param destFilePath  删除的文件
      * @throws RuntimeException if an error occurs while operator
      * FileOutputStream
+     * @return  返回是否成功
      */
     public static boolean copyFile(String sourceFilePath, String destFilePath) {
+
         InputStream inputStream = null;
         try {
             inputStream = new FileInputStream(sourceFilePath);
@@ -299,6 +297,7 @@ public class FileUtils {
     /**
      * read file to string list, a element of list is a line
      *
+     * @param filePath    路径
      * @param charsetName The name of a supported {@link
      * java.nio.charset.Charset </code>charset<code>}
      * @return if file not exist, return null, else return content of file
@@ -306,6 +305,7 @@ public class FileUtils {
      * BufferedReader
      */
     public static List<String> readFileToList(String filePath, String charsetName) {
+
         File file = new File(filePath);
         List<String> fileContent = new ArrayList<String>();
         if (file == null || !file.isFile()) {
@@ -331,27 +331,13 @@ public class FileUtils {
 
 
     /**
-     * get file name from path, not include suffix
      *
-     * <pre>
-     *      getFileNameWithoutExtension(null)               =   null
-     *      getFileNameWithoutExtension("")                 =   ""
-     *      getFileNameWithoutExtension("   ")              =   "   "
-     *      getFileNameWithoutExtension("abc")              =   "abc"
-     *      getFileNameWithoutExtension("a.mp3")            =   "a"
-     *      getFileNameWithoutExtension("a.b.rmvb")         =   "a.b"
-     *      getFileNameWithoutExtension("c:\\")              =   ""
-     *      getFileNameWithoutExtension("c:\\a")             =   "a"
-     *      getFileNameWithoutExtension("c:\\a.b")           =   "a"
-     *      getFileNameWithoutExtension("c:a.txt\\a")        =   "a"
-     *      getFileNameWithoutExtension("/home/admin")      =   "admin"
-     *      getFileNameWithoutExtension("/home/admin/a.txt/b.mp3")  =   "b"
-     * </pre>
-     *
-     * @return file name from path, not include suffix
-     * @see
+     * @param filePath  文件的路径
+     * @return 返回文件的信息
      */
     public static String getFileNameWithoutExtension(String filePath) {
+
+
         if (StringUtils.isEmpty(filePath)) {
             return filePath;
         }
@@ -389,9 +375,11 @@ public class FileUtils {
      *      getFileName("/home/admin/a.txt/b.mp3")  =   "b.mp3"
      * </pre>
      *
+     * @param filePath    路径
      * @return file name from path, include suffix
      */
     public static String getFileName(String filePath) {
+
         if (StringUtils.isEmpty(filePath)) {
             return filePath;
         }
@@ -419,8 +407,11 @@ public class FileUtils {
      *      getFolderName("/home/admin")      =   "/home"
      *      getFolderName("/home/admin/a.txt/b.mp3")  =   "/home/admin/a.txt"
      * </pre>
+     * @param filePath    路径
+     * @return  file name from path, include suffix
      */
     public static String getFolderName(String filePath) {
+
 
         if (StringUtils.isEmpty(filePath)) {
             return filePath;
@@ -449,8 +440,11 @@ public class FileUtils {
      *      getFileExtension("/home/admin/a.txt/b")  =   ""
      *      getFileExtension("/home/admin/a.txt/b.mp3")  =   "mp3"
      * </pre>
+     * @param filePath    路径
+     * @return  信息
      */
     public static String getFileExtension(String filePath) {
+
         if (StringUtils.isBlank(filePath)) {
             return filePath;
         }
@@ -465,27 +459,12 @@ public class FileUtils {
 
 
     /**
-     * Creates the directory named by the trailing filename of this file,
-     * including the complete directory path required
-     * to create this directory. <br/>
-     * <br/>
-     * <ul>
-     * <strong>Attentions:</strong>
-     * <li>makeDirs("C:\\Users\\Trinea") can only create users folder</li>
-     * <li>makeFolder("C:\\Users\\Trinea\\") can create Trinea folder</li>
-     * </ul>
      *
-     * @return true if the necessary directories have been created or the target
-     * directory already exists, false one of
-     * the directories can not be created.
-     * <ul>
-     * <li>if {@link FileUtils#getFolderName(String)} return null, return
-     * false</li>
-     * <li>if target directory already exists, return true</li>
-     * <li>return {@link File#makeFolder}</li>
-     * </ul>
+     * @param filePath 路径
+     * @return 是否创建成功
      */
     public static boolean makeDirs(String filePath) {
+
         String folderName = getFolderName(filePath);
         if (StringUtils.isEmpty(folderName)) {
             return false;
@@ -499,15 +478,20 @@ public class FileUtils {
 
 
     /**
-     * @see #makeDirs(String)
+     *
+     * @param filePath 路径
+     * @return  是否创建成功
      */
     public static boolean makeFolders(String filePath) {
         return makeDirs(filePath);
+
     }
 
 
     /**
-     * Indicates if this file represents a file on the underlying file system.
+     *
+     * @param filePath 路径
+     * @return  是否存在这个文件
      */
     public static boolean isFileExist(String filePath) {
         if (StringUtils.isBlank(filePath)) {
@@ -516,14 +500,17 @@ public class FileUtils {
 
         File file = new File(filePath);
         return (file.exists() && file.isFile());
+
     }
 
 
     /**
-     * Indicates if this file represents a directory on the underlying file
-     * system.
+     *
+     * @param directoryPath 路径
+     * @return  是否有文件夹
      */
     public static boolean isFolderExist(String directoryPath) {
+
         if (StringUtils.isBlank(directoryPath)) {
             return false;
         }
@@ -534,14 +521,12 @@ public class FileUtils {
 
 
     /**
-     * delete file or directory
-     * <ul>
-     * <li>if path is null or empty, return true</li>
-     * <li>if path not exist, return true</li>
-     * <li>if path exist, delete recursion. return true</li>
-     * <ul>
+     *
+     * @param path  路径
+     * @return  是否删除成功
      */
     public static boolean deleteFile(String path) {
+
         if (StringUtils.isBlank(path)) {
             return true;
         }
@@ -569,17 +554,12 @@ public class FileUtils {
 
 
     /**
-     * get file size
-     * <ul>
-     * <li>if path is null or empty, return -1</li>
-     * <li>if path exist and it is a file, return file size, else return
-     * -1</li>
-     * <ul>
      *
-     * @return returns the length of this file in bytes. returns -1 if the file
-     * does not exist.
+     * @param path  路径
+     * @return  返回文件大小
      */
     public static long getFileSize(String path) {
+
         if (StringUtils.isBlank(path)) {
             return -1;
         }
@@ -630,6 +610,7 @@ public class FileUtils {
      * @return 字节数组
      */
     public static byte[] readFile4Bytes(File file) {
+
         // 如果文件不存在,返回空
         if (!file.exists()) {
             return null;
@@ -663,9 +644,13 @@ public class FileUtils {
      * @param filePathAndName 带有完整绝对路径的文件名
      * @return String 返回文本文件的内容
      */
-    public static String readFileContent(String filePathAndName)
-            throws IOException {
-        return readFileContent(filePathAndName, null, null, 1024);
+    public static String readFileContent(String filePathAndName) {
+        try {
+            return readFileContent(filePathAndName, null, null, 1024);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  null;
     }
 
 
@@ -679,7 +664,7 @@ public class FileUtils {
      * @return String 返回文本文件的内容
      */
     public static String readFileContent(String filePathAndName, String encoding, String sep, int bufLen)
-            throws IOException {
+           {
         if (filePathAndName == null || filePathAndName.equals("")) {
             return "";
         }
@@ -708,14 +693,12 @@ public class FileUtils {
                 str.append(data).append(sep);
             }
         } catch (IOException e) {
-            throw e;
         } finally {
             try {
                 if (br != null) br.close();
                 if (isr != null) isr.close();
                 if (fs != null) fs.close();
             } catch (IOException e) {
-                throw e;
             }
         }
         return str.toString();
@@ -731,6 +714,7 @@ public class FileUtils {
      * @return 拷贝成功
      */
     public static boolean copyAssetToSDCard(AssetManager assetManager, String fileName, String destinationPath) {
+
         try {
             InputStream is = assetManager.open(fileName);
             FileOutputStream os = new FileOutputStream(destinationPath);
@@ -755,9 +739,11 @@ public class FileUtils {
     /**
      * 调用系统方式打开文件.
      *
+     * @param context    上下文
      * @param file 文件
      */
     public static void openFile(Context context, File file) {
+
         try {
             // 调用系统程序打开文件.
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -778,9 +764,11 @@ public class FileUtils {
      * 根据文件路径，检查文件是否不大于指定大小
      *
      * @param filepath 文件路径
-     * @param checkSize 指定大小（单位K）
+     * @param maxSize    最大
+     * @return  是否
      */
     public static boolean checkFileSize(String filepath, int maxSize) {
+
         File file = new File(filepath);
         if (!file.exists() || file.isDirectory()) {
             return false;
@@ -794,7 +782,13 @@ public class FileUtils {
     }
 
 
+    /**
+     *
+     * @param context  上下文
+     * @param file  文件对象
+     */
     public static void openMedia(Context context, File file) {
+
         if (file.getName().endsWith(".png") ||
                 file.getName().endsWith(".jpg") ||
                 file.getName().endsWith(".jpeg")) {
@@ -809,17 +803,22 @@ public class FileUtils {
     /**
      * 打开多媒体文件.
      *
+     * @param context    上下文
      * @param file 多媒体文件
      */
     public static void viewPhoto(Context context, String file) {
+
         viewPhoto(context, new File(file));
     }
 
 
     /**
      * 打开照片
+     * @param context    上下文
+     * @param file  文件对象
      */
     public static void viewPhoto(Context context, File file) {
+
         try {
             // 调用系统程序打开文件.
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -834,16 +833,25 @@ public class FileUtils {
 
     /**
      * 将字符串以UTF-8编码保存到文件中
+     * @param str    保存的字符串
+     * @param fileName 文件的名字
+     * @return  是否保存成功
      */
     public static boolean saveStrToFile(String str, String fileName) {
+
         return saveStrToFile(str, fileName, "UTF-8");
     }
 
 
     /**
      * 将字符串以charsetName编码保存到文件中
+     * @param str    保存的字符串
+     * @param fileName  文件的名字
+     * @param charsetName  字符串编码
+     * @return  是否保存成功
      */
     public static boolean saveStrToFile(String str, String fileName, String charsetName) {
+
         if (str == null || "".equals(str)) {
             return false;
         }
@@ -883,8 +891,12 @@ public class FileUtils {
 
     /**
      * 将content://形式的uri转为实际文件路径
+     * @param context    上下文
+     * @param uri  地址
+     * @return  uri转为实际文件路径
      */
     public static String uriToPath(Context context, Uri uri) {
+
         Cursor cursor = null;
         try {
             if (uri.getScheme().equalsIgnoreCase(URI_TYPE_FILE)) {
@@ -910,9 +922,11 @@ public class FileUtils {
     /**
      * 打开多媒体文件.
      *
+     * @param context    上下文
      * @param file 多媒体文件
      */
     public static void playSound(Context context, String file) {
+
         playSound(context, new File(file));
     }
 
@@ -920,9 +934,11 @@ public class FileUtils {
     /**
      * 打开多媒体文件.
      *
+     * @param context    上下文
      * @param file 多媒体文件
      */
     public static void playSound(Context context, File file) {
+
         try {
             // 调用系统程序打开文件.
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -939,16 +955,18 @@ public class FileUtils {
     /**
      * 打开视频文件.
      *
+     * @param context    上下文
      * @param file 视频文件
      */
     public static void playVideo(Context context, String file) {
+
         playVideo(context, new File(file));
     }
 
 
     /**
      * 打开视频文件.
-     *
+     * @param context    上下文
      * @param file 视频文件
      */
     public static void playVideo(Context context, File file) {

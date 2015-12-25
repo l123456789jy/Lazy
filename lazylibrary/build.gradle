@@ -24,10 +24,11 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
-def siteUrl = 'https://github.com/saymagic/AndroidUtils'
 // 项目的主页
-def gitUrl = 'https://github.com/l123456789jy/Lazy'
+def siteUrl = 'https://github.com/l123456789jy/Lazy.git'
 // Git仓库的url
+def gitUrl = 'https://github.com/l123456789jy/Lazy.git'
+
 group = "com.github.lazylibrary" // Maven Group ID for the artifact，一般填你唯一的包名
 install {
     repositories.mavenInstaller {

@@ -6,15 +6,6 @@ import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-/**
- * NetWork Utils
- * <ul>
- * <strong>Attentions</strong>
- * <li>You should add <strong>android.permission.ACCESS_NETWORK_STATE</strong> in manifest, to get network status.</li>
- * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-11-03
- */
 public class NetWorkUtils {
 
     public static final String NETWORK_TYPE_WIFI       = "wifi";
@@ -27,8 +18,8 @@ public class NetWorkUtils {
     /**
      * Get network type
      * 
-     * @param context
-     * @return
+     * @param context  context
+     * @return 网络状态
      */
     public static int getNetworkType(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager)context
@@ -40,8 +31,8 @@ public class NetWorkUtils {
     /**
      * Get network type name
      * 
-     * @param context
-     * @return
+     * @param context  context
+     * @return  NetworkTypeName
      */
     public static String getNetworkTypeName(Context context) {
         ConnectivityManager manager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -69,8 +60,8 @@ public class NetWorkUtils {
     /**
      * Whether is fast mobile network
      * 
-     * @param context
-     * @return
+     * @param context  context
+     * @return  FastMobileNetwork
      */
     private static boolean isFastMobileNetwork(Context context) {
         TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);

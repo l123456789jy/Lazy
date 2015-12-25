@@ -153,10 +153,10 @@ public class DataCleanManager {
     }
 
     /**
-     * 格式化单位
      *
-     * @param size
-     * @return
+     *
+     * @param size 传入的大小
+     * @return  格式化单位返回格式化之后的值
      */
     public static String getFormatSize(double size) {
         double kiloByte = size / 1024;

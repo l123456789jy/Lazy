@@ -5,7 +5,7 @@ package com.github.lazylibrary.util;
  * 
  * @author <a href="http://www.trinea.cn/" target="_blank">Trinea</a>
  * 
- * @param <T>
+ * @param <T>    泛型
  */
 public abstract class SingletonUtils<T> {
 

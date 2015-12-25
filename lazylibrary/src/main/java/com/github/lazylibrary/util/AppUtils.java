@@ -27,7 +27,6 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -233,15 +232,7 @@ public final class AppUtils {
      *
      * @param context     上下文
      * @param processName 进程名
-     * @return <ul>
-     * return whether this process is named with processName
-     * <li>if context is null, return false</li>
-     * <li>if {@link ActivityManager#getRunningAppProcesses()} is null,
-     * return false</li>
-     * <li>if one process of
-     * {@link ActivityManager#getRunningAppProcesses()} is equal to
-     * processName, return true, otherwise return false</li>
-     * </ul>
+     * @return 是否含有当前的进程
      */
     public static boolean isNamedProcess(Context context, String processName) {
         if (context == null || TextUtils.isEmpty(processName)) {
@@ -297,6 +288,7 @@ public final class AppUtils {
      *
      * @param context 上下文
      * @param pkgName 包名
+     * @return 返回应用的签名
      */
     public static String getSign(Context context, String pkgName) {
         try {
@@ -308,6 +300,7 @@ public final class AppUtils {
             e.printStackTrace();
             return null;
         }
+
     }
 
 
@@ -520,8 +513,8 @@ public final class AppUtils {
     /**
      * 检测当前应用是否是Debug版本
      *
-     * @param ctx
-     * @return
+     * @param ctx 上下文
+     * @return 是否是Debug版本
      */
     public static boolean isDebuggable(Context ctx) {
         boolean debuggable = false;

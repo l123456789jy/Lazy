@@ -1081,14 +1081,13 @@ public class ClassUtils {
     /**
      * 兼容类型转换。null值是OK的。如果不需要转换，则返回原来的值。
      * 进行的兼容类型转换如下：（基本类对应的Wrapper类型不再列出。）
-     * <ul>
-     * <li> String -> char, enum, Date
-     * <li> byte, short, int, long -> byte, short, int, long
-     * <li> float, double -> float, double
-     * </ul>
+     * @param value 转换的类型
+     * @param type 字节码
+     * @return 返回转换之后的对象
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public static Object convertCompatibleType(Object value, Class<?> type) {
+
         if (value == null || type == null ||
                 type.isAssignableFrom(value.getClass())) {
             return value;

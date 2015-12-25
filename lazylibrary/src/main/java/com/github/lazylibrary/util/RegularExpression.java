@@ -120,8 +120,8 @@ public class RegularExpression {
 	}
 
 	/**
-	 * 验证是否为正常的文本内容. 内容只能为：汉字、数字、字母、下划线、 中文标点符号（。 ； ， ： “ ”（ ） 、 ！ ？ 《 》）、
-	 * 英文标点符号（. ; , : ' ( ) / ! ? < >），且不能为空.
+	 * 验证是否为正常的文本内容. 内容只能为：汉字、数字、字母、下划线、 中文标点符号
+	 * 英文标点符号，且不能为空.
 	 * 
 	 * @param toCheckStr 待验证的字符串
 	 * @return 是否通过验证
@@ -153,8 +153,8 @@ public class RegularExpression {
 	/**
 	 * 判断房间号是否符合规范：例如102,1202... 先判断3位或者4位的数字
 	 * 
-	 * @param roomNumber
-	 * @return
+	 * @param roomNumber  roomNumber
+	 * @return   boolean
 	 */
 	public static boolean checkRoomNumber(String roomNumber) {
 		String regex = "^\\d{3,4}$";
@@ -164,8 +164,8 @@ public class RegularExpression {
 	/**
 	 * 将身份证后六位隐藏,不显示
 	 * 
-	 * @param identityID
-	 * @return
+	 * @param identityID  identityID
+	 * @return  String
 	 */
 	public static String hideIdentityID(String identityID) {
 		if(identityID != null && identityID.length() > 6) {
@@ -178,8 +178,8 @@ public class RegularExpression {
 	/**
 	 * 是否规范的邮编
 	 * 
-	 * @param toCheckStr
-	 * @return
+	 * @param toCheckStr  toCheckStr
+	 * @return  是否规范的邮编
 	 */
 	public static boolean isPostalCode(String toCheckStr) {
 		return isNumeric(toCheckStr) && toCheckStr.length() == 6;
@@ -188,8 +188,8 @@ public class RegularExpression {
 	/**
 	 * 邮箱验证
 	 * 
-	 * @param toCheckStr
-	 * @return
+	 * @param toCheckStr  toCheckStr
+	 * @return  邮箱验证
 	 */
 	public static boolean isEmail(String toCheckStr) {
 		String patternStr = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
@@ -199,8 +199,8 @@ public class RegularExpression {
 	/**
 	 * 办公电话验证 格式：区号(可选)-主机号-分机号(可选)
 	 * 
-	 * @param toCheckStr
-	 * @return
+	 * @param toCheckStr  toCheckStr
+	 * @return   办公电话验证 格式：区号(可选)-主机号-分机号(可选)
 	 */
 	public static boolean isWorkPhone(String toCheckStr) {
 		String patternStr = "(^[0-9]{3,4}-[0-9]{7,8}-[0-9]{3,4}$)|(^[0-9]{3,4}-[0-9]{7,8}$)|(^[0-9]{7,8}-[0-9]{3,4}$)|(^[0-9]{7,8}$)";
@@ -210,8 +210,8 @@ public class RegularExpression {
 	/**
 	 * 常用固定电话验证 格式：区号(可选)-主机号
 	 * 
-	 * @param toCheckStr
-	 * @return
+	 * @param toCheckStr  toCheckStr
+	 * @return   常用固定电话验证 格式：区号(可选)-主机号
 	 */
 	public static boolean isPhoneNumber(String toCheckStr) {
 		String patternStr = "(^[0-9]{3,4}-[0-9]{7,8}$)|(^[0-9]{7,8}$)";
@@ -221,8 +221,8 @@ public class RegularExpression {
 	/**
 	 * 是否为规范的手机电话号码 ，以13/15/18开头
 	 * 
-	 * @param toCheckStr
-	 * @return
+	 * @param toCheckStr  toCheckStr
+	 * @return  是否为规范的手机电话号码 ，以13/15/18开头
 	 */
 	public static boolean isTelephone(String toCheckStr) {
 		String patternStr = "(^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$)";

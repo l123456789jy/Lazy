@@ -22,10 +22,11 @@ public class DigestUtils {
     /**
      * encode By MD5
      * 
-     * @param str
+     * @param str    字符串
      * @return String
      */
     public static String md5(String str) {
+
         if (str == null) {
             return null;
         }

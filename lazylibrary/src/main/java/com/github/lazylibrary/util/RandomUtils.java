@@ -2,37 +2,7 @@ package com.github.lazylibrary.util;
 
 import java.util.Random;
 
-/**
- * Random Utils
- * <ul>
- * Shuffling algorithm
- * <li>{@link #shuffle(Object[])} Shuffling algorithm, Randomly permutes the specified array using a default source of
- * randomness</li>
- * <li>{@link #shuffle(Object[], int)} Shuffling algorithm, Randomly permutes the specified array</li>
- * <li>{@link #shuffle(int[])} Shuffling algorithm, Randomly permutes the specified int array using a default source of
- * randomness</li>
- * <li>{@link #shuffle(int[], int)} Shuffling algorithm, Randomly permutes the specified int array</li>
- * </ul>
- * <ul>
- * get random int
- * <li>{@link #getRandom(int)} get random int between 0 and max</li>
- * <li>{@link #getRandom(int, int)} get random int between min and max</li>
- * </ul>
- * <ul>
- * get random numbers or letters
- * <li>{@link #getRandomCapitalLetters(int)} get a fixed-length random string, its a mixture of uppercase letters</li>
- * <li>{@link #getRandomLetters(int)} get a fixed-length random string, its a mixture of uppercase and lowercase letters
- * </li>
- * <li>{@link #getRandomLowerCaseLetters(int)} get a fixed-length random string, its a mixture of lowercase letters</li>
- * <li>{@link #getRandomNumbers(int)} get a fixed-length random string, its a mixture of numbers</li>
- * <li>{@link #getRandomNumbersAndLetters(int)} get a fixed-length random string, its a mixture of uppercase, lowercase
- * letters and numbers</li>
- * <li>{@link #getRandom(String, int)} get a fixed-length random string, its a mixture of chars in source</li>
- * <li>{@link #getRandom(char[], int)} get a fixed-length random string, its a mixture of chars in sourceChar</li>
- * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-5-12
- */
+
 public class RandomUtils {
 
     public static final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -48,9 +18,8 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of uppercase, lowercase letters and numbers
      * 
-     * @param length
-     * @return
-     * @see RandomUtils#getRandom(String source, int length)
+     * @param length  length
+     * @return  RandomUtils
      */
     public static String getRandomNumbersAndLetters(int length) {
         return getRandom(NUMBERS_AND_LETTERS, length);
@@ -59,9 +28,8 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of numbers
      * 
-     * @param length
-     * @return
-     * @see RandomUtils#getRandom(String source, int length)
+     * @param length  length
+     * @return  RandomUtils
      */
     public static String getRandomNumbers(int length) {
         return getRandom(NUMBERS, length);
@@ -70,9 +38,8 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of uppercase and lowercase letters
      * 
-     * @param length
-     * @return
-     * @see RandomUtils#getRandom(String source, int length)
+     * @param length  length
+     * @return  RandomUtils
      */
     public static String getRandomLetters(int length) {
         return getRandom(LETTERS, length);
@@ -81,9 +48,8 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of uppercase letters
      * 
-     * @param length
-     * @return
-     * @see RandomUtils#getRandom(String source, int length)
+     * @param length  length
+     * @return   CapitalLetters
      */
     public static String getRandomCapitalLetters(int length) {
         return getRandom(CAPITAL_LETTERS, length);
@@ -92,9 +58,8 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of lowercase letters
      * 
-     * @param length
-     * @return
-     * @see RandomUtils#getRandom(String source, int length)
+     * @param length  length
+     * @return  get a fixed-length random string, its a mixture of lowercase letters
      */
     public static String getRandomLowerCaseLetters(int length) {
         return getRandom(LOWER_CASE_LETTERS, length);
@@ -103,12 +68,9 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of chars in source
      * 
-     * @param source
-     * @param length
-     * @return <ul>
-     *         <li>if source is null or empty, return null</li>
-     *         <li>else see {@link RandomUtils#getRandom(char[] sourceChar, int length)}</li>
-     *         </ul>
+     * @param source  source
+     * @param length  length
+     * @return  get a fixed-length random string, its a mixture of chars in source
      */
     public static String getRandom(String source, int length) {
         return StringUtils.isEmpty(source) ? null : getRandom(source.toCharArray(), length);
@@ -117,12 +79,9 @@ public class RandomUtils {
     /**
      * get a fixed-length random string, its a mixture of chars in sourceChar
      * 
-     * @param sourceChar
-     * @param length
-     * @return <ul>
-     *         <li>if sourceChar is null or empty, return null</li>
-     *         <li>if length less than 0, return null</li>
-     *         </ul>
+     * @param sourceChar    sourceChar
+     * @param length  length
+     * @return   get a fixed-length random string, its a mixture of chars in sourceChar
      */
     public static String getRandom(char[] sourceChar, int length) {
         if (sourceChar == null || sourceChar.length == 0 || length < 0) {
@@ -137,31 +96,26 @@ public class RandomUtils {
         return str.toString();
     }
 
+
     /**
-     * get random int between 0 and max
-     * 
-     * @param max
-     * @return <ul>
-     *         <li>if max <= 0, return 0</li>
-     *         <li>else return random int between 0 and max</li>
-     *         </ul>
+     *
+     * @param max  接受的数值
+     * @return  返回一个随机的数值
      */
     public static int getRandom(int max) {
+
         return getRandom(0, max);
     }
 
+
     /**
-     * get random int between min and max
-     * 
-     * @param min
-     * @param max
-     * @return <ul>
-     *         <li>if min > max, return 0</li>
-     *         <li>if min == max, return min</li>
-     *         <li>else return random int between min and max</li>
-     *         </ul>
+     *
+     * @param min  最小
+     * @param max  最大
+     * @return  返回一个范围的数值
      */
     public static int getRandom(int min, int max) {
+
         if (min > max) {
             return 0;
         }
@@ -174,8 +128,8 @@ public class RandomUtils {
     /**
      * Shuffling algorithm, Randomly permutes the specified array using a default source of randomness
      * 
-     * @param objArray
-     * @return
+     * @param objArray  数组
+     * @return 从新的数组
      */
     public static boolean shuffle(Object[] objArray) {
         if (objArray == null) {
@@ -188,9 +142,9 @@ public class RandomUtils {
     /**
      * Shuffling algorithm, Randomly permutes the specified array
      * 
-     * @param objArray
-     * @param shuffleCount
-     * @return
+     * @param objArray  数组
+     * @param shuffleCount  洗的个数
+     * @return  是否成功
      */
     public static boolean shuffle(Object[] objArray, int shuffleCount) {
         int length;
@@ -210,8 +164,8 @@ public class RandomUtils {
     /**
      * Shuffling algorithm, Randomly permutes the specified int array using a default source of randomness
      * 
-     * @param intArray
-     * @return
+     * @param intArray  数组
+     * @return  洗牌之后
      */
     public static int[] shuffle(int[] intArray) {
         if (intArray == null) {
@@ -224,9 +178,9 @@ public class RandomUtils {
     /**
      * Shuffling algorithm, Randomly permutes the specified int array
      * 
-     * @param intArray
-     * @param shuffleCount
-     * @return
+     * @param intArray   数组
+     * @param shuffleCount  范围
+     * @return  新的数组
      */
     public static int[] shuffle(int[] intArray, int shuffleCount) {
         int length;

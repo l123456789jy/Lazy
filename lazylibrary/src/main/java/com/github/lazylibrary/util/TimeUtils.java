@@ -20,9 +20,9 @@ public class TimeUtils {
     /**
      * long time to string
      * 
-     * @param timeInMillis
-     * @param dateFormat
-     * @return
+     * @param timeInMillis timeInMillis
+     * @param dateFormat   dateFormat
+     * @return String
      */
     public static String getTime(long timeInMillis, SimpleDateFormat dateFormat) {
         return dateFormat.format(new Date(timeInMillis));
@@ -31,8 +31,8 @@ public class TimeUtils {
     /**
      * long time to string, format is {@link #DEFAULT_DATE_FORMAT}
      * 
-     * @param timeInMillis
-     * @return
+     * @param timeInMillis time
+     * @return String
      */
     public static String getTime(long timeInMillis) {
         return getTime(timeInMillis, DEFAULT_DATE_FORMAT);
@@ -41,7 +41,7 @@ public class TimeUtils {
     /**
      * get current time in milliseconds
      * 
-     * @return
+     * @return long
      */
     public static long getCurrentTimeInLong() {
         return System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class TimeUtils {
     /**
      * get current time in milliseconds, format is {@link #DEFAULT_DATE_FORMAT}
      * 
-     * @return
+     * @return  String
      */
     public static String getCurrentTimeInString() {
         return getTime(getCurrentTimeInLong());
@@ -59,9 +59,11 @@ public class TimeUtils {
     /**
      * get current time in milliseconds
      * 
-     * @return
+     * @param dateFormat    dateFormat
+     * @return  String
      */
     public static String getCurrentTimeInString(SimpleDateFormat dateFormat) {
+
         return getTime(getCurrentTimeInLong(), dateFormat);
     }
 }

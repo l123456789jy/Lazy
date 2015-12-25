@@ -51,73 +51,85 @@ public class DES {
 	 * 将字符串进行DES加密
 	 * @param source 未加密源字符串
 	 * @return 加密后字符串
-	 * @throws Exception
 	 */
-	public String encrypt(String source) throws Exception {
+	public String encrypt(String source)  {
 		byte[] retByte = null;
 
 		// Create SecretKey object
-		DESKeySpec dks = new DESKeySpec(KEY);
-		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
-		SecretKey securekey = keyFactory.generateSecret(dks);
+		DESKeySpec dks = null;
+		try {
+			dks = new DESKeySpec(KEY);
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
+			SecretKey securekey = keyFactory.generateSecret(dks);
 
-		// Create IvParameterSpec object with initialization vector
-		IvParameterSpec spec = new IvParameterSpec(IV);
+			// Create IvParameterSpec object with initialization vector
+			IvParameterSpec spec = new IvParameterSpec(IV);
 
-		// Create Cipter object
-		Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+			// Create Cipter object
+			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
 
-		// Initialize Cipher object
-		cipher.init(Cipher.ENCRYPT_MODE, securekey, spec);
+			// Initialize Cipher object
+			cipher.init(Cipher.ENCRYPT_MODE, securekey, spec);
 
-		// Decrypting data
-		retByte = cipher.doFinal(source.getBytes());
-		
-		String result = "";
-		if (code == 0) {
-			result = new String(retByte, "ISO-8859-1");
-		} else if (code == 1) {
-			result = Base64.encodeToString(retByte,false);
-		} else {
-			result = new String(retByte);
+			// Decrypting data
+			retByte = cipher.doFinal(source.getBytes());
+
+			String result = "";
+			if (code == 0) {
+				result = new String(retByte, "ISO-8859-1");
+			} else if (code == 1) {
+				result = Base64.encodeToString(retByte,false);
+			} else {
+				result = new String(retByte);
+			}
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return result;
+		return null;
+
 	}
 
 	/**
 	 * 将DES加密的字符串解密
 	 * @param encrypted 加密过的字符串
 	 * @return 未加密源字符串
-	 * @throws Exception 
 	 */
-	public String decrypt(String encrypted) throws Exception {
+	public String decrypt(String encrypted) {
 		byte[] retByte = null;
 
 		// Create SecretKey object
-		DESKeySpec dks = new DESKeySpec(KEY);
-		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
-		SecretKey securekey = keyFactory.generateSecret(dks);
+		DESKeySpec dks = null;
+		try {
+			dks = new DESKeySpec(KEY);
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
+			SecretKey securekey = keyFactory.generateSecret(dks);
 
-		// Create IvParameterSpec object with initialization vector
-		IvParameterSpec spec = new IvParameterSpec(IV);
+			// Create IvParameterSpec object with initialization vector
+			IvParameterSpec spec = new IvParameterSpec(IV);
 
-		// Create Cipter object
-		Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+			// Create Cipter object
+			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
 
-		// Initialize Cipher object
-		cipher.init(Cipher.DECRYPT_MODE, securekey, spec);
+			// Initialize Cipher object
+			cipher.init(Cipher.DECRYPT_MODE, securekey, spec);
 
-		if (code == 0) {
-			retByte = encrypted.getBytes("ISO-8859-1");
-		} else if (code == 1) {
-			retByte = Base64.decode(encrypted);
-		} else {
-			retByte = encrypted.getBytes();
+			if (code == 0) {
+				retByte = encrypted.getBytes("ISO-8859-1");
+			} else if (code == 1) {
+				retByte = Base64.decode(encrypted);
+			} else {
+				retByte = encrypted.getBytes();
+			}
+
+			// Decrypting data
+			retByte = cipher.doFinal(retByte);
+			return new String(retByte, "utf-8");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		// Decrypting data
-		retByte = cipher.doFinal(retByte);
-		return new String(retByte, "utf-8");
+		return null;
+
 	}
 	
 }

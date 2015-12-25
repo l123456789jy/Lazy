@@ -186,11 +186,13 @@ public class DeviceStatusUtils {
      *
      * @param context
      *            上下文
+     * @param millis    时间
      * @return 设置是否成功
      */
     public static boolean setScreenDormantTime(Context context, int millis) {
         return Settings.System.putInt(context.getContentResolver(),
                 Settings.System.SCREEN_OFF_TIMEOUT, millis);
+
     }
 
     /**
@@ -274,11 +276,17 @@ public class DeviceStatusUtils {
      * @return true：已经打开或者正在打开；false：已经关闭或者正在关闭
      *             没有找到蓝牙设备
      */
-    public static boolean isBluetoothOpen() throws Exception {
-        int bluetoothStateCode = getBluetoothState();
-        return bluetoothStateCode == BluetoothAdapter.STATE_ON
-                       || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON ? true
-                                                                                  : false;
+    public static boolean isBluetoothOpen()  {
+        int bluetoothStateCode = 0;
+        try {
+            bluetoothStateCode = getBluetoothState();
+            return bluetoothStateCode == BluetoothAdapter.STATE_ON
+                           || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON ? true
+                                                                                      : false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return  false;
     }
 
     /**
@@ -288,7 +296,7 @@ public class DeviceStatusUtils {
      *            打开
      *             没有找到蓝牙设备
      */
-    public static void setBluetooth(boolean enable) throws Exception {
+    public static void setBluetooth(boolean enable)  {
         // 如果当前蓝牙的状态与要设置的状态不一样
         if (isBluetoothOpen() != enable) {
             // 如果是要打开就打开，否则关闭
@@ -298,6 +306,7 @@ public class DeviceStatusUtils {
                 BluetoothAdapter.getDefaultAdapter().disable();
             }
         }
+
     }
 
 
@@ -318,7 +327,7 @@ public class DeviceStatusUtils {
      *
      * @param context
      *            上下文
-     * @return 媒体音量，取值范围为0-7
+     * @param ringVloume 音量
      */
     public static void setRingVolume(Context context, int ringVloume) {
         if (ringVloume < 0) {

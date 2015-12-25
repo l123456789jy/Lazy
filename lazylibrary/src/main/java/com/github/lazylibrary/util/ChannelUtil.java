@@ -19,21 +19,21 @@ public class ChannelUtil {
     private static String mChannel;
 
     /**
-     * 返回市场。  如果获取失败返回""
      *
-     * @param context
-     * @return
+     *
+     * @param context 上下文
+     * @return  返回市场号
      */
     public static String getChannel(Context context) {
         return getChannel(context, "Channel_Default");
     }
 
     /**
-     * 返回市场。  如果获取失败返回defaultChannel
      *
-     * @param context
-     * @param defaultChannel
-     * @return
+     *
+     * @param context  上下文
+     * @param defaultChannel  数值
+     * @return 返回市场。  如果获取失败返回defaultChannel
      */
     public static String getChannel(Context context, String defaultChannel) {
         //内存中获取

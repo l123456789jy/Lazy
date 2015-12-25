@@ -27,7 +27,6 @@ import com.github.lazylibrary.R;
  * 创建删除快捷图标
  *
  * @author jingle1267@163.com
- *         <p/>
  *         需要权限: com.android.launcher.permission.INSTALL_SHORTCUT com.android.launcher.permission.UNINSTALL_SHORTCUT
  */
 public final class ShortCutUtils {
@@ -65,9 +64,10 @@ public final class ShortCutUtils {
      * 为程序创建桌面快捷方式
      *
      * @param activity Activity
-     * @param activity res  快捷方式的图标
+     * @param res     res
      */
     public static void addShortcut(Activity activity,int res) {
+
         Intent shortcut = new Intent(
                 "com.android.launcher.action.INSTALL_SHORTCUT");
         // 快捷方式的名称
@@ -91,6 +91,7 @@ public final class ShortCutUtils {
      * @param activity Activity
      */
     public static void delShortcut(Activity activity) {
+
         Intent shortcut = new Intent(
                 "com.android.launcher.action.UNINSTALL_SHORTCUT");
         // 快捷方式的名称
