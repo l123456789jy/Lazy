@@ -50,6 +50,9 @@
 - DeviceStatusUtils
 - PhoneUtil
 - ShortCutUtils
+
+
+
 ##使用
          allprojects {
                     repositories {
