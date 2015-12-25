@@ -63,7 +63,7 @@
 
 
 ##
-       compile 'com.github.l123456789jy:Lazy:-SNAPSHOT'
+        compile 'com.github.l123456789jy:Lazy:-054d4c64e4-1'
 
 
 
