@@ -51,13 +51,13 @@
 - PhoneUtil
 - ShortCutUtils
 ##使用
-    -  allprojects {
-              repositories {
-                  maven { url "https://jitpack.io" }
-              }
-          }
+         allprojects {
+                    repositories {
+                        maven { url "https://jitpack.io" }
+                    }
+                }
 
-    -  compile 'com.github.l123456789jy:Lazy:-SNAPSHOT'
+       compile 'com.github.l123456789jy:Lazy:-SNAPSHOT'
 ## License
 
     Copyright 2015 lazy
