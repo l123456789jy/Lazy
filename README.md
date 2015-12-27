@@ -51,7 +51,7 @@
 - DeviceStatusUtils
 - PhoneUtil
 - ShortCutUtils
-
+- WiFiUtil
 
 
 ##依赖
