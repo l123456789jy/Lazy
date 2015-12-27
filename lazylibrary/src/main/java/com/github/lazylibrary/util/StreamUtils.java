@@ -1,31 +1,35 @@
+package com.github.lazylibrary.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
+/**
+ * æµè½¬æ¢æˆå­—ç¬¦ä¸²
+ */
 public class StreamUtils {
 
-	public static String streamToString(InputStream inputStream) {
-		try{
-			//´´½¨Ò»¸öÄÚ´æ×Ö½ÚĞ´ÈëÁ÷
-			ByteArrayOutputStream  out = new ByteArrayOutputStream();
+    /**
+     * @param inputStream inputStream
+     * @return å­—ç¬¦ä¸²è½¬æ¢ä¹‹åçš„
+     */
+    public static String streamToString(InputStream inputStream) {
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-			byte[] buffer = new byte[1024];
-			int len = 0;
-			while(( len = inputStream.read(buffer)) != -1){
-				out.write(buffer, 0, len);
-				out.flush();
-			}
-			
-			//½«Ò»¸öÄÚ´æĞ´ÈëÁ÷×ª»»³É×Ö·û´®
-			String  result = out.toString();
-			out.close();
-			inputStream.close();
-			return result;
+            byte[] buffer = new byte[1024];
+            int len = 0;
+            while ((len = inputStream.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+                out.flush();
+            }
 
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
+            String result = out.toString();
+            out.close();
+            inputStream.close();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }
