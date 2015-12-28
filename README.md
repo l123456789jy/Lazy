@@ -53,6 +53,8 @@
  [WiFiUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WiFiUtil.java)|WiFiUtil
  [WindowUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WiFiUtil.java)|窗口工具箱
  [ZipUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ZipUtil.java)|实现的Zip工具
+ [BadgeUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/BadgeUtil.java)|设置Badge
+ [LogUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/LogUtil.java)|LogUti工具类
 
 
 ##依赖
