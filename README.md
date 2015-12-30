@@ -29,7 +29,7 @@
   [FileUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/FileUtils.java)| 文件操作
   [HanziToPinyin](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/HanziToPinyin.java)| 拼音汉字处理
   [IOUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/IOUtils.java)| IOUtils
-  [MD5](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/IOUtils.java)| MD5
+  [MD5](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MD5.java)| MD5
   [MiscUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MiscUtils.java)| 设备信息的获取
   [NetWorkUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NetWorkUtils.java)| 网络状态
   [PhoneUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/PhoneUtil.java)| 手机组件调用工具类
@@ -39,7 +39,7 @@
   [SerializeUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SerializeUtils.java)| Serialize
   [ShellUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ShellUtils.java)| shell指令
   [ShortCutUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ShortCutUtils.java)| 创建删除快捷图标
- [SingletonUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SingletonUtils.java)| 单利工具
+ [SingletonUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SingletonUtils.java)| 单例工具
  [SizeUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SizeUtils.java)| SizeUtils
  [SqliteUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SqliteUtils.java)| SqliteUtils
  [StreamUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/StreamUtils.java)| 流转换成字符串
@@ -51,7 +51,7 @@
  [ViewAnimationUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ViewAnimationUtils.java)|视图动画工具箱，提供简单的控制视图的动画的工具方法
  [ViewUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ViewUtils.java)|view控制
  [WiFiUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WiFiUtil.java)|WiFiUtil
- [WindowUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WiFiUtil.java)|窗口工具箱
+ [WindowUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WindowUtils.java)|窗口工具箱
  [ZipUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ZipUtil.java)|实现的Zip工具
  [BadgeUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/BadgeUtil.java)|设置Badge
  [LogUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/LogUtil.java)|LogUti工具类
