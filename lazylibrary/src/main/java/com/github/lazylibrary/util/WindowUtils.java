@@ -14,10 +14,13 @@ package com.github.lazylibrary.util; /**
  * limitations under the License.
  */
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.view.Surface;
+import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * 窗口工具箱
@@ -73,5 +76,26 @@ public final class WindowUtils {
     public static final boolean isPortrait(Context context) {
         return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
     }
-
+    /**
+     *  调整窗口的透明度  1.0f,0.5f 变暗
+     * @param from  from>=0&&from<=1.0f
+     * @param to  to>=0&&to<=1.0f
+     * @param context  当前的activity
+     */
+    public static void dimBackground(final float from, final float to, Activity context) {
+        final Window window = context.getWindow();
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(from, to);
+        valueAnimator.setDuration(500);
+        valueAnimator.addUpdateListener(
+                new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        WindowManager.LayoutParams params
+                                = window.getAttributes();
+                        params.alpha = (Float) animation.getAnimatedValue();
+                        window.setAttributes(params);
+                    }
+                });
+        valueAnimator.start();
+    }
 }
