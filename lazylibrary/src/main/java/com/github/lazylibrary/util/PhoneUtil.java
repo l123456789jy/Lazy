@@ -27,7 +27,7 @@ import java.io.File;
  * @author jingle1267@163.com
  */
 public final class PhoneUtil {
-    private static long lastClickTime;
+  private static long lastClickTime;
     /**
      * Don't let anyone instantiate this class.
      */
@@ -106,7 +106,7 @@ public final class PhoneUtil {
      * @param activity   上下文
      * @param fileName    生成的图片文件的路径
      */
-    public static void toTakePhoto(int requestcode, Activity activity,String fileName) {
+    public static void toTakePhoto(int requestcode, Activity activity, String fileName) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra("camerasensortype", 2);// 调用前置摄像头
         intent.putExtra("autofocus", true);// 自动对焦
@@ -114,10 +114,7 @@ public final class PhoneUtil {
         intent.putExtra("showActionIcons", false);
         try {//创建一个当前任务id的文件然后里面存放任务的照片的和路径！这主文件的名字是用uuid到时候在用任务id去查路径！
             File file = new File(fileName);
-            if(!file.exists()){//如果这个文件存在就创建一个文件夹！
-                file.mkdirs();
-            }
-            Uri uri = Uri.fromFile(new File(fileName));
+            Uri uri = Uri.fromFile(file);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             activity.startActivityForResult(intent, requestcode);
         } catch (Exception e) {
@@ -136,5 +133,23 @@ public final class PhoneUtil {
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 "image/*");
         activity.startActivityForResult(intent, requestcode);
+    }
+
+
+    /**
+     *获取sd卡路径
+     * @return Stringpath
+     */
+    public static String getSDPath(){
+
+        File sdDir = null;
+        boolean sdCardExist = Environment.getExternalStorageState()
+                                         .equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
+        if   (sdCardExist)
+        {
+            sdDir = Environment.getExternalStorageDirectory();//获取跟目录
+        }
+        return sdDir.toString();
+
     }
 }
