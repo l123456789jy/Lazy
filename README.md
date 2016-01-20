@@ -31,6 +31,7 @@
   [IOUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/IOUtils.java)| IOUtils
   [MD5](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MD5.java)| MD5
   [MiscUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MiscUtils.java)| 设备信息的获取
+  [MitAppInventor2] (http://appinventor.mit.edu/explore) | 网络设计同步手机app
   [NetWorkUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NetWorkUtils.java)| 网络状态
   [PhoneUtil](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/PhoneUtil.java)| 手机组件调用工具类
   [PreferencesUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/PreferencesUtils.java)| sp工具类
