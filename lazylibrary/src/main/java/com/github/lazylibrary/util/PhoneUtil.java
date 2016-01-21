@@ -17,8 +17,11 @@ package com.github.lazylibrary.util; /**
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.telephony.TelephonyManager;
 import java.io.File;
 
 /**
@@ -137,19 +140,23 @@ public final class PhoneUtil {
 
 
     /**
-     *获取sd卡路径
-     * @return Stringpath
+     * 获取所有联系人的姓名和电话号码，需要READ_CONTACTS权限
+     * @param context 上下文
+     * @return Cursor。姓名：CommonDataKinds.Phone.DISPLAY_NAME；号码：CommonDataKinds.Phone.NUMBER
      */
-    public static String getSDPath(){
-
-        File sdDir = null;
-        boolean sdCardExist = Environment.getExternalStorageState()
-                                         .equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
-        if   (sdCardExist)
-        {
-            sdDir = Environment.getExternalStorageDirectory();//获取跟目录
-        }
-        return sdDir.toString();
-
+    public static Cursor getContactsNameAndNumber(Context context){
+        return context.getContentResolver().query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI, new String[] {
+                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
     }
+
+    /**
+     * 获取手机号码
+     * @param context 上下文
+     * @return 手机号码，手机号码不一定能获取到
+     */
+    public static String getMobilePhoneNumber(Context context){
+        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getLine1Number();
+    }
+
 }
