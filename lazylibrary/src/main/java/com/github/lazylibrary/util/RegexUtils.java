@@ -16,6 +16,9 @@
 
 package com.github.lazylibrary.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * <h2>正则表达式工具类，提供一些常用的正则表达式</h2>
  */
@@ -149,5 +152,41 @@ public class RegexUtils {
 	 */
 	public static boolean isURL(String string){
 		return string.matches(URL);
+	}
+
+
+
+	/**
+	 * 验证密码只能输入字母和数字的特殊字符,这个返回的是过滤之后的字符串
+	 */
+	public static String checkPasWord(String pro) {
+		try {
+			// 只允许字母、数字和汉字
+			String regEx = "[^a-zA-Z0-9\u4E00-\u9FA5]";
+			Pattern p = Pattern.compile(regEx);
+			Matcher m = p.matcher(pro);
+			return m.replaceAll("").trim();
+		} catch (Exception e) {
+		}
+		return "";
+	}
+
+
+
+
+
+	/**
+	 * 只能输入字母和汉字 这个返回的是过滤之后的字符串
+	 */
+	public static String checkInputPro(String pro) {
+		try {
+			String regEx = "[^a-zA-Z\u4E00-\u9FA5]";
+			Pattern p = Pattern.compile(regEx);
+			Matcher m = p.matcher(pro);
+			return m.replaceAll("").trim();
+		} catch (Exception e) {
+
+		}
+		return "";
 	}
 }
