@@ -16,3 +16,6 @@
 - compile 'de.greenrobot:eventbus:2.4.0'  不用说
 - compile 'me.relex:circleindicator:1.1.8@aar' 配合viewpager联动的指示器
 - compile 'com.github.chrisbanes:PhotoView:1.2.6'   双手放大缩小
+- cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1
+.1.2轮播图
+-   compile 'com.jiongbull:jlog:1.0.5'   能打印出格式化之后json log工具
