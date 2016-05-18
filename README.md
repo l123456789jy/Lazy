@@ -78,7 +78,7 @@
 [SDCardUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SDCardUtils.java)|SD卡工具箱
 [Symbols](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Symbols.java)|常用符号
 [WebViewManager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WebViewManager.java)|WebView管理器，提供常用设置
-
+[WebViewManager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AmUtiles.java)|定时器工具类
 
 
 
