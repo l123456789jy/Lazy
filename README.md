@@ -81,6 +81,8 @@
 [AmUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AmUtiles.java)|定时器工具类
 [XmlParseUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/XmlParseUtiles.java)|对pull解析xml进行了封装
 [AntiEmulatorUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AntiEmulatorUtiles.java)|检测是否在模拟器上运行
+[code style](https://github.com/l123456789jy/Lazy/tree/master/lazylibrary/src/file)|drakeet的code style
+
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
