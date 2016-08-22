@@ -16,6 +16,9 @@
 
 package com.github.lazylibrary.util;
 
+import java.io.FileOutputStream;
+import java.math.BigInteger;
+
 /**
  * <h2>字节工具类，提供一些有关字节的便捷方法</h2>
  * 
@@ -112,5 +115,41 @@ public class ByteUtils {
 	    	b[i] = (byte) ((in >>> offset) & 0xFF);
 	    }
 	    return b;
+	}
+
+
+	/**
+	 * 将字符串装换成2进制，并且写入本地
+	 * @param s
+	 * @param path
+	 * @return
+	 */
+	public static boolean toSaveHexString(String s,String path) {
+		BigInteger key = new BigInteger(s, 16);
+		byte[] newKey = subBytes(key.toByteArray(), 1, 16);//需要截取会多出00
+		try {
+			FileOutputStream outputStream = new FileOutputStream(path);
+			outputStream.write(newKey);
+			outputStream.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+
+	/**
+	 * 从一个byte[]数组中截取一部分
+	 * @param src
+	 * @param begin
+	 * @param count
+	 * @return
+	 */
+	public static byte[] subBytes ( byte[] src, int begin, int count){
+		byte[] bs = new byte[count];
+		for (int i = begin; i < begin + count; i++) {
+			bs[i - begin] = src[i];
+		}
+		return bs;
 	}
 }
