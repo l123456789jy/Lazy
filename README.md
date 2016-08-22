@@ -83,6 +83,8 @@
 [AntiEmulatorUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AntiEmulatorUtiles.java)|检测是否在模拟器上运行
 [code style](https://github.com/l123456789jy/Lazy/tree/master/lazylibrary/src/file)|drakeet的code style
 [FastBlur](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/FastBlur.java)|毛玻璃效果
+[AES](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AES.java)|AES加解密
+[M3U8ParserUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/M3U8ParserUtiles.java)|解析m3u8文件
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
