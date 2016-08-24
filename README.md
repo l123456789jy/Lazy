@@ -85,6 +85,7 @@
 [FastBlur](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/FastBlur.java)|毛玻璃效果
 [AES](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AES.java)|AES加解密
 [M3U8ParserUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/M3U8ParserUtiles.java)|解析m3u8文件
+[Hex](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Hex.java)|转换成16进制
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
