@@ -11,13 +11,36 @@ import android.widget.Toast;
 public class ToastUtils {
     private static Toast toast = null; //Toast的对象！
 
-    public static void showToast(Context mContext, String id) {
+    private static void showToast(CharSequence msg, int flag) {
         if (toast == null) {
-            toast = Toast.makeText(mContext, id, Toast.LENGTH_SHORT);
-        }
-        else {
-            toast.setText(id);
+            toast = Toast.makeText(getApplicationContext(), msg, flag);
+        } else {
+            toast.setText(msg);
+            toast.setDuration(flag);
         }
         toast.show();
+    }
+
+    public static void showToast(CharSequence msg) {
+        showToast(msg, Toast.LENGTH_SHORT);
+    }
+
+    public static void showToast(int resId) {
+        showToast(getApplicationContext().getResources().getText(resId));
+    }
+
+    public static void showToastLong(CharSequence msg) {
+        showToast(msg, Toast.LENGTH_LONG);
+    }
+
+    public static void showToastLong(int resId) {
+        showToastLong(getApplicationContext().getResources().getText(resId));
+    }
+    
+    /**
+     * 使用前，需要先实现此方法。使用ApplicatioContex，避免内存泄露
+     */ 
+    private Context getApplicationContext() {
+        throw new IllegalStateException("尚未实现Toaster#getApplicationContext方法！！！");
     }
 }
