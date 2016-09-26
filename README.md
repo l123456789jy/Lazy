@@ -87,6 +87,7 @@
 [M3U8ParserUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/M3U8ParserUtiles.java)|解析m3u8文件
 [Hex](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Hex.java)|转换成16进制
 [CreatQRCodeImg](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/CreatQRCodeImg.java)|生成带log二维码
+[NoPreloadViewPager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NoPreloadViewPager.java)|禁止预加载的viewpager
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
