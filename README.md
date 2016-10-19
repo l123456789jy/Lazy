@@ -88,6 +88,7 @@
 [Hex](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Hex.java)|转换成16进制
 [CreatQRCodeImg](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/CreatQRCodeImg.java)|生成带log二维码
 [NoPreloadViewPager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NoPreloadViewPager.java)|禁止预加载的viewpager
+[App](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/App.java)|通过反射获取Application单利的工具类
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
