@@ -36,6 +36,7 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Build;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -43,8 +44,10 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 import android.view.View;
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -1685,6 +1688,43 @@ final class BitmapUtil {
                         * width];
         }
         return rotatedData;
+    }
+
+
+    /**
+     * A safer decodeStream method
+     * rather than the one of {@link BitmapFactory}
+     * which will be easy to get OutOfMemory Exception
+     * while loading a big image file.
+     *
+     * @param uri 压缩相册返回的照片
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static Bitmap safeDecodeStream(Uri uri, int targetWidth, int targetHeight,Context mContext )
+        throws FileNotFoundException {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        android.content.ContentResolver resolver = mContext.getContentResolver();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(
+            new BufferedInputStream(resolver.openInputStream(uri), 16 * 1024), null, options);
+        // 得到图片的宽度、高度；
+        float imgWidth = options.outWidth;
+        float imgHeight = options.outHeight;
+        // 分别计算图片宽度、高度与目标宽度、高度的比例；取大于等于该比例的最小整数；
+        int widthRatio = (int) Math.ceil(imgWidth / (float) targetWidth);
+        int heightRatio = (int) Math.ceil(imgHeight / (float) targetHeight);
+        options.inSampleSize = 1;
+        if (widthRatio > 1 || widthRatio > 1) {
+            if (widthRatio > heightRatio) {
+                options.inSampleSize = widthRatio;
+            } else {
+                options.inSampleSize = heightRatio;
+            }
+        }
+        // 设置好缩放比例后，加载图片进内容；
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeStream(new BufferedInputStream(resolver.openInputStream(uri), 16 * 1024), null, options);
     }
 
 }

@@ -78,9 +78,18 @@
 [SDCardUtils](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/SDCardUtils.java)|SD卡工具箱
 [Symbols](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Symbols.java)|常用符号
 [WebViewManager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/WebViewManager.java)|WebView管理器，提供常用设置
-
-
-
+[AmUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AmUtiles.java)|定时器工具类
+[XmlParseUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/XmlParseUtiles.java)|对pull解析xml进行了封装
+[AntiEmulatorUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AntiEmulatorUtiles.java)|检测是否在模拟器上运行
+[code style](https://github.com/l123456789jy/Lazy/tree/master/lazylibrary/src/file)|drakeet的code style
+[FastBlur](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/FastBlur.java)|毛玻璃效果
+[AES](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/AES.java)|AES加解密
+[M3U8ParserUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/M3U8ParserUtiles.java)|解析m3u8文件
+[Hex](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/Hex.java)|转换成16进制
+[CreatQRCodeImg](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/CreatQRCodeImg.java)|生成带log二维码
+[NoPreloadViewPager](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NoPreloadViewPager.java)|禁止预加载的viewpager
+[App](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/App.java)|通过反射获取Application单利的工具类
+[MediaPlayerUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MediaPlayerUtiles.java)|播放资源目录下音频文件
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'

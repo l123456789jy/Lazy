@@ -22,9 +22,15 @@ android {
                     'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.7
+        sourceCompatibility 1.7
+    }
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('lib/zxing.jar')
+    compile 'com.android.support:support-v4:23.1.1'
 }
 // 项目的主页
 def siteUrl = 'https://github.com/l123456789jy/Lazy'
