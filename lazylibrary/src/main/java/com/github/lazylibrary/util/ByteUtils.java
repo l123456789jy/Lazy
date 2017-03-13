@@ -16,9 +16,6 @@
 
 package com.github.lazylibrary.util;
 
-import java.io.FileOutputStream;
-import java.math.BigInteger;
-
 /**
  * <h2>字节工具类，提供一些有关字节的便捷方法</h2>
  * 
