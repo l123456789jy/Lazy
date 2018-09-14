@@ -116,16 +116,17 @@ public final class AppUtils {
 
     /**
      * 安装apk
-     *
+     * Android 7.0 或更高版本的应用私有目录被限制访问
      * @param context 上下文
      * @param file    APK文件
+     * @paras authority provider->authority属性
      */
-    public static void installApk(Context context, File file) {
+    public void installApk(Context context, File file,String authority) {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file),
-                "application/vnd.android.package-archive");
+        intent.setDataAndType(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N ? FileProvider.getUriForFile(context,authority,file):
+                Uri.fromFile(file),"\"application/vnd.android.package-archive\"");
         context.startActivity(intent);
     }
 
@@ -136,13 +137,13 @@ public final class AppUtils {
      * @param context 上下文
      * @param file    APK文件uri
      */
-    public static void installApk(Context context, Uri file) {
+    /*public static void installApk(Context context, Uri file) {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
         intent.setDataAndType(file, "application/vnd.android.package-archive");
         context.startActivity(intent);
-    }
+    }*/
 
 
     /**
