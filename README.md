@@ -92,6 +92,7 @@
 [MediaPlayerUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/MediaPlayerUtiles.java)|播放资源目录下音频文件
 [Repair7PopupWindow](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/view/Repair7PopupWindow.java)|修复7.0上popwindow位置显示错误
 [NioFileUtiles](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/NioFileUtiles.java)|使用NIO操作文件提高性能
+[ArgbHelper](https://github.com/l123456789jy/Lazy/blob/master/lazylibrary/src/main/java/com/github/lazylibrary/util/ArgbHelper.java)|渐变色工具
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
