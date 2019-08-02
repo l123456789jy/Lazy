@@ -3,8 +3,10 @@
 #这个是我自己收集整理的一些常用的工具类
 ##有好的工具类，欢迎提交PR
 ### 作者微博: [@海淀区小鬼风尘](http://weibo.com/2675061813/profile?topnav=1&wvr=6)
-###  QQ群欢迎大家加入：391513287
 
+
+![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=l123456789jy.lazy)
+![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=l123456789jy.lazy)
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Maven Central](https://img.shields.io/bintray/v/gcssloop/maven/sutil.svg)](https://bintray.com/gcssloop/maven/sutil/view)
@@ -96,6 +98,8 @@
 
 ##依赖
           compile 'com.github.lazylibrary:lazylibrary:1.0.2'
+
+
 
 
 ## License
